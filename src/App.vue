@@ -1,28 +1,51 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <carousel :per-page="3">
+      <carousel-item v-for="(option, index) in options" :key="index">
+        <div class="ball" :style="{ backgroundColor: option.color }" />
+      </carousel-item>
+    </carousel>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Carousel from './Carousel.vue'
+import CarouselItem from './CarouselItem.vue'
 
 export default {
   name: 'app',
-  components: {
-    HelloWorld
+
+  components: { Carousel, CarouselItem },
+
+  data () {
+    return {
+      options: [
+        { color: 'blue' },
+        { color: 'yellow' },
+        { color: 'red' },
+        { color: 'black' },
+        { color: 'pink' },
+        { color: 'turquoise' },
+        { color: 'magenta' },
+        { color: 'white' },
+        { color: 'orange' },
+        { color: 'green' }
+      ]
+    }
   }
 }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+// #app {
+//   max-width: 900px;
+//   margin: 0 auto;
+// }
+
+.ball {
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+  border-radius: 50%;
 }
 </style>
