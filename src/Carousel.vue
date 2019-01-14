@@ -97,12 +97,9 @@ export default {
 
   methods: {
     startLoop () {
-      if (~~this.position <= 0 && this.position > this.endPosition) {
-        this.position -= this.itemSize
-        return
-      }
-
-      this.position = 0
+      return ~~this.position <= 0 && this.position > this.endPosition
+        ? (this.position -= this.itemSize)
+        : (this.position = 0)
     },
 
     initLoop () {
