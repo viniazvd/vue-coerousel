@@ -10,30 +10,23 @@
       </div>
     </div>
 
-    <!-- <slot v-if="false" name="navigation">
-      <navigation
-        :next="navigationNext"
-        :prev="navigationPrev"
-        @navigation-click="handleNavigation"
-      />
-    </slot>
-
-    <slot v-if="paginationEnabled" name="pagination">
-      <pagination @paginationclick="goToPage($event, 'pagination')"/>
-    </slot> -->
+    <pagination v-if="pagination" />
   </div>
 </template>
+
 <script>
+import Pagination from './components/Pagination'
 
 export default {
   name: 'vue-coe-carousel',
 
-  // components: {
-  //   Navigation: () => import('./components/Navigation'),
-  //   Pagination: () => import('./components/Pagination')
-  // }
+  components: { Pagination },
 
   props: {
+    pagination: {
+      type: Boolean,
+      default: true
+    },
     perPage: {
       type: [String, Number],
       default: 1
@@ -55,6 +48,16 @@ export default {
       position: 0
     }
   },
+
+  // provide () {
+  //   const vm = {}
+
+  //   Object.defineProperty(vm, 'vm', {
+  //     get: () => this,
+  //     enumerable: true
+  //   })
+  //   return vm
+  // },
 
   mounted () {
     // console.log(this.$refs.carousel.clientWidth)
@@ -87,7 +90,7 @@ export default {
     endPosition () {
       const itemsNum = this.$children.length
 
-      return -(this.itemSize * itemsNum) + 100
+      return -(this.itemSize * itemsNum) + (100 + this.itemSize)
     },
 
     style () {
@@ -105,6 +108,10 @@ export default {
     initLoop () {
       window.setInterval(this.startLoop, 500)
     }
+
+    // goToPage () {
+    //   console.log('goToPage')
+    // }
   }
 }
 </script>
