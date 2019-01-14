@@ -1,10 +1,8 @@
 
 <template>
   <div class="vue-coerousel">
-    clientX: {{ pointer }}
-
-    <button @click="trans -= 100">erick paraiba</button>
-    {{ trans }}
+    <button @click="position -= 30">+</button>
+    position: {{ position }}
 
     <div class="wrapper">
       <div ref="carousel" class="inner" :style="style">
@@ -39,32 +37,75 @@ export default {
     perPage: {
       type: [String, Number],
       default: 1
+    },
+    isDraggable: {
+      type: Boolean,
+      default: true
+    },
+    isLoopable: Boolean,
+    loopDelay: {
+      type: [String, Number],
+      default: 1000
     }
   },
 
   data () {
     return {
-      pointer: null,
-      trans: 0
+      initPosition: null,
+      position: 0,
+      loop: false
     }
   },
 
   mounted () {
-    this.$children.forEach(c => c.$on('init-pointer', ({ clientX }) => {
-      this.pointer = clientX
+    // console.log(this.$refs.carousel.clientWidth)
+
+    this.isLoopable && this.initLoop()
+
+    this.$children.forEach(c => c.$on('init-position', ({ clientX }) => {
+      this.initPosition = ~~(clientX / 10) - this.position
     }))
 
-    this.$children.forEach(c => c.$on('set-pointer', ({ clientX }) => {
-      const slipped = (this.pointer - clientX) / 3
+    this.$children.forEach(c => c.$on('move-position', ({ clientX }) => {
+      const slipped = ~~((clientX / 10) - this.initPosition)
 
-      this.trans -= slipped
-      this.pointer = null
+      this.position = slipped
+
+      if (this.position > 0) this.position -= slipped
+      if (this.position < this.maxSize) this.position = this.maxSize
+    }))
+
+    this.$children.forEach(c => c.$on('set-position', ({ clientX }) => {
+      this.initPosition = null
     }))
   },
 
   computed: {
+    itemSize () {
+      return ~~(100 / this.perPage)
+    },
+
+    maxSize () {
+      const itemsNum = this.$children.length
+
+      return -(this.itemSize * itemsNum) + 100
+    },
+
     style () {
-      return { transform: `translateX(${this.trans}%)` }
+      return { transform: `translateX(${this.position}%)` }
+    }
+  },
+
+  methods: {
+    startLoop () {
+      if (this.position <= 0 && this.position > this.maxSize && !this.loop) this.position -= this.itemSize
+      if (this.position >= this.maxSize && this.loop) this.position += this.itemSize
+      if (this.position === this.maxSize && !this.loop) this.loop = true
+      if (this.position === 0) this.loop = false
+    },
+
+    initLoop () {
+      window.setInterval(this.startLoop, 500)
     }
   }
 }
