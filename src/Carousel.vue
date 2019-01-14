@@ -1,11 +1,10 @@
 
 <template>
   <div class="vue-coerousel">
-    <button @click="position -= 30">+</button>
     position: {{ position }}
 
     <div class="wrapper">
-      <div class="inner" :style="style" @mousedown="mousedown" @mouseup="mouseup">
+      <div class="inner" :style="style" @mousedown="mousedown">
         <slot></slot>
       </div>
     </div>
@@ -105,13 +104,19 @@ export default {
       this.initPosition = ~~(clientX / 10) - this.position
 
       window.addEventListener('mousemove', this.mousemove)
-      window.addEventListener('mouseup', () => window.removeEventListener('mousemove', this.mousemove))
+      window.addEventListener('mouseup', this.mouseup)
     },
 
-    mouseup (e) { // touchend ?
+    mouseup ({ clientX }) { // touchend ?
       if (!this.isDraggable) return false
 
+      const position = this.position / this.itemSize
+      const isCenter = !String(position).split('').includes('.')
+
+      if (!isCenter) this.position = Math.round(this.position / this.itemSize) * 100
+
       this.initPosition = null
+      window.removeEventListener('mousemove', this.mousemove)
     }
   }
 }
