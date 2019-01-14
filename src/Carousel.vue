@@ -5,7 +5,7 @@
     position: {{ position }}
 
     <div class="wrapper">
-      <div ref="carousel" class="inner" :style="style">
+      <div class="inner" :style="style" @mousedown="mousedown" @mouseup="mouseup">
         <slot></slot>
       </div>
     </div>
@@ -60,26 +60,7 @@ export default {
   },
 
   mounted () {
-    // console.log(this.$refs.carousel.clientWidth)
-
     this.isLoopable && this.initLoop()
-
-    this.$children.forEach(c => c.$on('init-position', ({ clientX }) => {
-      this.initPosition = ~~(clientX / 10) - this.position
-    }))
-
-    this.$children.forEach(c => c.$on('move-position', ({ clientX }) => {
-      const slipped = ~~((clientX / 10) - this.initPosition)
-
-      this.position = slipped
-
-      if (this.position > 0) this.position -= slipped
-      if (this.position < this.endPosition) this.position = this.endPosition
-    }))
-
-    this.$children.forEach(c => c.$on('set-position', ({ clientX }) => {
-      this.initPosition = null
-    }))
   },
 
   computed: {
@@ -107,11 +88,31 @@ export default {
 
     initLoop () {
       window.setInterval(this.startLoop, this.loopDelay)
-    }
+    },
 
-    // goToPage () {
-    //   console.log('goToPage')
-    // }
+    mousemove ({ clientX }) {
+      const slipped = ~~((clientX / 10) - this.initPosition)
+
+      this.position = slipped
+
+      if (this.position > 0) this.position -= slipped
+      if (this.position < this.endPosition) this.position = this.endPosition
+    },
+
+    mousedown ({ clientX }) {
+      if (!this.isDraggable) return false
+
+      this.initPosition = ~~(clientX / 10) - this.position
+
+      window.addEventListener('mousemove', this.mousemove)
+      window.addEventListener('mouseup', () => window.removeEventListener('mousemove', this.mousemove))
+    },
+
+    mouseup (e) { // touchend ?
+      if (!this.isDraggable) return false
+
+      this.initPosition = null
+    }
   }
 }
 </script>
