@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <carousel :per-page="4">
+    <carousel :per-page="3">
       <carousel-item v-for="(option, index) in options" :key="index">
         <div class="ball" :style="{ backgroundColor: option.color }" />
       </carousel-item>
@@ -10,7 +10,7 @@
 
 <script>
 import Carousel from './Carousel.vue'
-import CarouselItem from './CarouselItem.vue'
+import CarouselItem from './components/CarouselItem.vue'
 
 export default {
   name: 'app',
