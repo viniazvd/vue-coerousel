@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <carousel :per-page="3">
+    <carousel :per-page="4">
       <carousel-item v-for="(option, index) in options" :key="index">
         <div class="ball" :style="{ backgroundColor: option.color }" />
       </carousel-item>
