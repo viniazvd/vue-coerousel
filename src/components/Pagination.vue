@@ -41,6 +41,7 @@ export default {
 
   & > .option {
     height: 15px;
+    width: 10px;
     opacity: 0.3;
     margin-right: 15px;
     border-radius: 50%;
@@ -49,7 +50,8 @@ export default {
 
   & > .-active {
     width: 35px;
-    border-radius: 5px;
+    border-radius: 10px;
+    transition-duration: 1s;
     background: linear-gradient(135deg, #BC4CF7 0%, #7873EE 100%);
   }
 }
