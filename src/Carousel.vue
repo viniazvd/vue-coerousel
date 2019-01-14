@@ -72,7 +72,7 @@ export default {
       this.position = slipped
 
       if (this.position > 0) this.position -= slipped
-      if (this.position < this.maxSize) this.position = this.maxSize
+      if (this.position < this.endPosition) this.position = this.endPosition
     }))
 
     this.$children.forEach(c => c.$on('set-position', ({ clientX }) => {
@@ -82,10 +82,10 @@ export default {
 
   computed: {
     itemSize () {
-      return (100 / this.perPage)
+      return 100 / this.perPage
     },
 
-    maxSize () {
+    endPosition () {
       const itemsNum = this.$children.length
 
       return -(this.itemSize * itemsNum) + 100
@@ -98,9 +98,9 @@ export default {
 
   methods: {
     startLoop () {
-      if (~~this.position <= 0 && this.position > this.maxSize && !this.loop) this.position -= this.itemSize
-      if (this.position >= this.maxSize && this.loop) this.position += this.itemSize
-      if (this.position === this.maxSize && !this.loop) this.loop = true
+      if (~~this.position <= 0 && this.position > this.endPosition && !this.loop) this.position -= this.itemSize
+      if (this.position >= this.endPosition && this.loop) this.position += this.itemSize
+      if (this.position === this.endPosition && !this.loop) this.loop = true
       if (~~this.position >= 0) this.loop = false
     },
 
