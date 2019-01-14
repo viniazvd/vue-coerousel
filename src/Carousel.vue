@@ -49,15 +49,15 @@ export default {
     }
   },
 
-  // provide () {
-  //   const vm = {}
+  provide () {
+    const options = {}
 
-  //   Object.defineProperty(vm, 'vm', {
-  //     get: () => this,
-  //     enumerable: true
-  //   })
-  //   return vm
-  // },
+    Object.defineProperty(options, 'childrens', { get: () => this.$children.length - 1, enumerable: true })
+    Object.defineProperty(options, 'perPage', { get: () => this.perPage, enumerable: true })
+    Object.defineProperty(options, 'data', { get: () => this, enumerable: true })
+
+    return options
+  },
 
   mounted () {
     // console.log(this.$refs.carousel.clientWidth)
@@ -106,7 +106,7 @@ export default {
     },
 
     initLoop () {
-      window.setInterval(this.startLoop, 500)
+      window.setInterval(this.startLoop, this.loopDelay)
     }
 
     // goToPage () {
