@@ -52,8 +52,7 @@ export default {
   data () {
     return {
       initPosition: null,
-      position: 0,
-      loop: false
+      position: 0
     }
   },
 
@@ -98,10 +97,12 @@ export default {
 
   methods: {
     startLoop () {
-      if (~~this.position <= 0 && this.position > this.endPosition && !this.loop) this.position -= this.itemSize
-      if (this.position >= this.endPosition && this.loop) this.position += this.itemSize
-      if (this.position === this.endPosition && !this.loop) this.loop = true
-      if (~~this.position >= 0) this.loop = false
+      if (~~this.position <= 0 && this.position > this.endPosition) {
+        this.position -= this.itemSize
+        return
+      }
+
+      this.position = 0
     },
 
     initLoop () {
