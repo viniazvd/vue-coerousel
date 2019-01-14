@@ -82,7 +82,7 @@ export default {
 
   computed: {
     itemSize () {
-      return ~~(100 / this.perPage)
+      return (100 / this.perPage)
     },
 
     maxSize () {
@@ -98,10 +98,10 @@ export default {
 
   methods: {
     startLoop () {
-      if (this.position <= 0 && this.position > this.maxSize && !this.loop) this.position -= this.itemSize
+      if (~~this.position <= 0 && this.position > this.maxSize && !this.loop) this.position -= this.itemSize
       if (this.position >= this.maxSize && this.loop) this.position += this.itemSize
       if (this.position === this.maxSize && !this.loop) this.loop = true
-      if (this.position === 0) this.loop = false
+      if (~~this.position >= 0) this.loop = false
     },
 
     initLoop () {
