@@ -17,7 +17,7 @@
 import Pagination from './components/Pagination'
 
 export default {
-  name: 'vue-coe-carousel',
+  name: 'vue-coerousel',
 
   components: { Pagination },
 
@@ -38,13 +38,18 @@ export default {
     loopDelay: {
       type: [String, Number],
       default: 1000
+    },
+    breakpoints: {
+      type: Object,
+      default: () => ({})
     }
   },
 
   data () {
     return {
       initPosition: null,
-      position: 0
+      position: 0,
+      currentWidth: 0
     }
   },
 
@@ -61,17 +66,32 @@ export default {
 
   mounted () {
     this.isLoopable && this.initLoop()
+
+    this.hasBreakpoints && this.setCurrentWidth({ target: { innerWidth: document.body.clientWidth } })
+
+    window.addEventListener('resize', this.setCurrentWidth)
   },
 
   computed: {
     itemSize () {
-      return 100 / this.perPage
+      return 100 / this.internalPerPage
     },
 
     endPosition () {
       const itemsNum = this.$children.length
 
       return -(this.itemSize * itemsNum) + (100 + this.itemSize)
+    },
+
+    hasBreakpoints () {
+      return !!Object.keys(this.breakpoints).length
+    },
+
+    internalPerPage () {
+      const breakpoints = this.breakpoints
+      const width = this.currentWidth
+
+      return this.hasBreakpoints && breakpoints[width] ? breakpoints[width].perPage : this.perPage
     },
 
     style () {
@@ -88,6 +108,17 @@ export default {
 
     initLoop () {
       window.setInterval(this.startLoop, this.loopDelay)
+    },
+
+    setCurrentWidth ({ target: { innerWidth } }) {
+      let width
+
+      if (innerWidth >= 1024) width = 1024
+      if (innerWidth <= 1024 && innerWidth >= 769) width = 768
+      if (innerWidth <= 768 && innerWidth >= 641) width = 640
+      if (innerWidth <= 640 && innerWidth >= 320) width = 320
+
+      this.currentWidth = width
     },
 
     mousemove ({ clientX }) {
@@ -114,11 +145,15 @@ export default {
       const position = this.position / this.itemSize
       const isCenter = !String(position).split('').includes('.')
 
-      if (!isCenter && this.position >= this.endPosition) this.position = (Math.round(this.position / this.itemSize) * 100) / this.perPage
+      if (!isCenter && this.position >= this.endPosition) this.position = (Math.round(this.position / this.itemSize) * 100) / this.internalPerPage
 
       this.initPosition = null
       window.removeEventListener('mousemove', this.mousemove)
     }
+  },
+
+  beforeDestroy () {
+    window.removeEventListener('resize', this.setCurrentWidth)
   }
 }
 </script>
