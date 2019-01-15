@@ -51,9 +51,11 @@ export default {
   provide () {
     const options = {}
 
-    Object.defineProperty(options, 'childrens', { get: () => this.$children.length - 1, enumerable: true })
-    Object.defineProperty(options, 'perPage', { get: () => this.perPage, enumerable: true })
-    Object.defineProperty(options, 'data', { get: () => this, enumerable: true })
+    const define = (name, get) => Object.defineProperty(options, name, { get, enumerable: true })
+
+    define('childrens', () => this.$children.length - 1)
+    define('perPage', () => this.perPage)
+    define('data', () => this)
 
     return options
   },
@@ -107,13 +109,13 @@ export default {
       window.addEventListener('mouseup', this.mouseup)
     },
 
-    mouseup ({ clientX }) { // touchend ?
+    mouseup () { // touchend ?
       if (!this.isDraggable) return false
 
       const position = this.position / this.itemSize
       const isCenter = !String(position).split('').includes('.')
 
-      if (!isCenter) this.position = Math.round(this.position / this.itemSize) * 100
+      if (!isCenter && this.position >= this.endPosition) this.position = (Math.round(this.position / this.itemSize) * 100) / this.perPage
 
       this.initPosition = null
       window.removeEventListener('mousemove', this.mousemove)
@@ -134,7 +136,6 @@ export default {
     & > .inner {
       display: flex;
       transition: transform .3s;
-      transform: var(--transform);
     }
   }
 }
