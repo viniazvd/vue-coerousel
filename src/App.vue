@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <carousel :per-page="3">
+    <carousel :per-page="3" :is-loopable="false">
       <carousel-item v-for="(option, index) in options" :key="index">
         <div class="ball" :style="{ backgroundColor: option.color }" />
       </carousel-item>
@@ -29,7 +29,11 @@ export default {
         { color: 'magenta' },
         { color: 'white' },
         { color: 'orange' },
-        { color: 'green' }
+        { color: 'green' },
+        { color: 'purple' },
+        { color: 'cyan' },
+        { color: 'lime' },
+        { color: 'lightblue' }
       ]
     }
   }
