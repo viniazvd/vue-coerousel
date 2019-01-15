@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <carousel :per-page="3" :is-loopable="false">
+    <carousel :per-page="3" :is-loopable="false" :breakpoints="breakpoints">
       <carousel-item v-for="(option, index) in options" :key="index">
         <div class="ball" :style="{ backgroundColor: option.color }" />
       </carousel-item>
@@ -34,7 +34,13 @@ export default {
         { color: 'cyan' },
         { color: 'lime' },
         { color: 'lightblue' }
-      ]
+      ],
+      breakpoints: {
+        1024: { perPage: 4 },
+        768: { perPage: 3 },
+        640: { perPage: 2 },
+        320: { perPage: 1 }
+      }
     }
   }
 }
