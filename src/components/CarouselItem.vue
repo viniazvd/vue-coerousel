@@ -8,9 +8,11 @@
 export default {
   name: 'carousel-item',
 
+  inject: ['data'],
+
   computed: {
     flex () {
-      return '1 0 ' + (100 / this.$parent.perPage) + '%'
+      return '1 0 ' + (100 / this.data.internalPerPage) + '%'
     },
 
     isDraggable () {
