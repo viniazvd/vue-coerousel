@@ -4,7 +4,7 @@
       v-for="page in pagination"
       :key="page"
       :class="setClasses(page)"
-      @click="data.position = -((page - 1) * 100)"
+      @click="goToPage(page)"
     />
   </div>
 </template>
@@ -17,7 +17,7 @@ export default {
 
   computed: {
     pagination () {
-      return Math.round(this.childrens / this.perPage)
+      return Math.ceil(this.childrens / this.perPage)
     }
   },
 
@@ -28,6 +28,13 @@ export default {
           '-active': Math.round(this.data.position / -100) === (page - 1)
         }
       ]
+    },
+
+    goToPage (page) {
+      const remainder = this.childrens % this.perPage
+      const diff = (this.pagination === page && remainder && (this.perPage - remainder) * this.data.itemSize) || 0
+
+      this.data.position = -(((page - 1) * 100) - diff)
     }
   }
 }
