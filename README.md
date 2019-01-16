@@ -77,4 +77,4 @@ perPage        |  `(String, Number)`  | `false`   |  `1000`
 breakpoints    |  `Object`            | `false`   |  `{}`    
 
 ## Contribution
-@convenia team: @guibarscevicius, @lucbic, @iErik-Black
+@convenia team
