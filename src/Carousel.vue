@@ -58,7 +58,7 @@ export default {
 
     const define = (name, get) => Object.defineProperty(options, name, { get, enumerable: true })
 
-    define('childrens', () => this.$children.length - 1)
+    define('children', () => this.$children.length - 1)
     define('data', () => this)
 
     return options
