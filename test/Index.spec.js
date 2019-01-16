@@ -1,4 +1,6 @@
-import VueCoeCalendar from '../'
+
+import { shallowMount } from '@vue/test-utils'
+import VueCoeCalendar from '../src/Carousel.vue'
 
 /* eslint-disable */
 describe('VueCoerousel', () => {
