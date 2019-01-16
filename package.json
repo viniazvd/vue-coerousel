@@ -1,30 +1,46 @@
 {
-  "name": "vue-coe-carousel",
+  "name": "vue-coerousel",
   "version": "0.1.0",
   "private": true,
+  "cdn": "dist/vue-coerousel.js",
+  "main": "dist/vue-coerousel.cjs.js",
+  "unpkg": "dist/vue-coerousel.js",
+  "module": "dist/vue-coerousel.es.js",
+  "jsdelivr": "dist/vue-coerousel.js",
+  "umd:main": "dist/vue-coerousel.js",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit"
-  },
-  "dependencies": {
-    "vue": "^2.5.21"
+    "test": "yarn build && NODE_ENV=test jest",
+    "serve": "poi --serve examples/main.js",
+    "build": "bili"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.5",
-    "@vue/cli-plugin-eslint": "^3.0.5",
-    "@vue/cli-plugin-unit-jest": "^3.0.5",
-    "@vue/cli-service": "^3.0.5",
-    "@vue/eslint-config-standard": "^4.0.0",
-    "@vue/test-utils": "^1.0.0-beta.20",
-    "babel-core": "7.0.0-bridge.0",
-    "babel-eslint": "^10.0.1",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.0",
+    "@vue/test-utils": "^1.0.0-beta.27",
+    "autoprefixer": "^9.4.3",
     "babel-jest": "^23.6.0",
-    "eslint": "^5.8.0",
-    "eslint-plugin-vue": "^5.0.0",
-    "node-sass": "^4.9.0",
-    "sass-loader": "^7.0.1",
+    "bili": "^3.4.2",
+    "jest": "^23.6.0",
+    "node-sass": "^4.11.0",
+    "poi": "^12.1.6",
+    "rollup-plugin-vue": "^4.3.2",
+    "sass-loader": "^7.1.0",
+    "vue": "^2.5.21",
+    "vue-jest": "^3.0.2",
     "vue-template-compiler": "^2.5.21"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "vue"
+    ],
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
+      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
+    },
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    }
   }
 }
