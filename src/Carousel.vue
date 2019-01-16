@@ -111,14 +111,10 @@ export default {
     },
 
     setCurrentWidth ({ target: { innerWidth } }) {
-      let width
-
-      if (innerWidth >= 1024) width = 1024
-      if (innerWidth <= 1024 && innerWidth >= 769) width = 768
-      if (innerWidth <= 768 && innerWidth >= 641) width = 640
-      if (innerWidth <= 640 && innerWidth >= 320) width = 320
-
-      this.currentWidth = width
+      if (innerWidth >= 1024) this.currentWidth = 1024
+      if (innerWidth <= 1024 && innerWidth >= 769) this.currentWidth = 768
+      if (innerWidth <= 768 && innerWidth >= 641) this.currentWidth = 640
+      if (innerWidth <= 640 && innerWidth >= 320) this.currentWidth = 320
     },
 
     mousemove ({ clientX }) {
