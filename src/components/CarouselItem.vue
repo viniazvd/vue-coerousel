@@ -16,7 +16,7 @@ export default {
     },
 
     isDraggable () {
-      return this.$parent.isDraggable && !this.$parent.isLoopable
+      return this.data.isDraggable && !this.data.isLoopable
     }
   }
 }
