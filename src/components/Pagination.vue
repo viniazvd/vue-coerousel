@@ -14,11 +14,17 @@
 export default {
   name: 'pagination',
 
-  inject: ['childrens', 'data'],
+  inject: ['children', 'data'],
 
   computed: {
     pagination () {
-      return Math.ceil(this.childrens / this.data.internalPerPage)
+      return Math.ceil(this.children / this.data.internalPerPage)
+    },
+
+    containerWidth () {
+      const pagination = this.pagination - 1
+
+      return { '--width': ((pagination * 10) + (pagination * 5) + 35) + 'px' }
     }
   },
 
@@ -32,7 +38,7 @@ export default {
     },
 
     goToPage (page) {
-      const remainder = this.childrens % this.data.internalPerPage
+      const remainder = this.children % this.data.internalPerPage
       const diff = (this.pagination === page && remainder && (this.data.internalPerPage - remainder) * this.data.itemSize) || 0
 
       this.data.position = -(((page - 1) * 100) - diff)
@@ -43,14 +49,14 @@ export default {
     const button = Array
       .from({ length: this.pagination }, (_, index) => index + 1)
       .map(page => {
-        return h('button', {
+        return h('div', {
           key: page,
           class: this.setClasses(page),
           on: { click: () => this.goToPage(page) }
         })
       })
 
-    return h('div', { staticClass: 'pagination' }, [ button ])
+    return h('div', { style: this.containerWidth, staticClass: 'pagination' }, [ button ])
   }
 }
 </script>
@@ -58,43 +64,26 @@ export default {
 <style lang="scss">
 .pagination {
   display: flex;
+  margin: 0 auto;
   padding-top: 10px;
-  justify-content: center;
+  width: var(--width);
+  justify-content: space-between;
 
   & > .option {
     position: relative;
     width: 10px;
-    height: 15px;
+    height: 10px;
     opacity: 0.3;
     outline: none;
-    margin-right: 10px;
-    border-radius: 50%;
+    border-radius: 5px;
     background-color: #121E48;
+    transition: width .3s linear;
   }
 
   & > .-active {
-    width: 35px;
-    border-radius: 10px;
-    transition-duration: 1s;
     opacity: 1;
+    width: 35px;
     background: linear-gradient(135deg, #BC4CF7 0%, #7873EE 100%);
-
-    &:before {
-      position: absolute;
-      content: '';
-      left: -1px;
-      top: 0;
-      width: 10px;
-      height: 13px;
-      outline: none;
-      border-radius: 50%;
-      background-color: white;
-      transition-duration: 0.7s;
-      transition-delay: 0.1s;
-      transform: translateX(0%);
-      // transform: translateX(250%);
-      transition-timing-function: ease-in;
-    }
   }
 }
 </style>
