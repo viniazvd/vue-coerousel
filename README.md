@@ -78,6 +78,4 @@ perPage        |  `(String, Number)`  | `false`   |  `1000`  |
 breakpoints    |  `Object`            | `false`   |  `{}`    |
 
 ## Contribution
-- @guibarscevicius
-- @lucbic
-- @iErik #sqn
+@convenia team: @guibarscevicius, @lucbic, @iErik-Black
