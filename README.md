@@ -67,15 +67,14 @@ export default {
 
 ## Props
 
-Name           |   type               | required  | default  | About
------          | -------------------- | --------- | -------- | -------
-date           |  `(String, Object)`  |  `true`   | 
-pagination     |  Boolean             | `false`   |  `true`  |
-perPage        |  `(String, Number)`  | `false`   |    `1`   |
-isDraggable    |  Boolean             | `false`   |  `true`  |
-isLoopable     |  Boolean             | `false`   |  `false` |
-perPage        |  `(String, Number)`  | `false`   |  `1000`  |
-breakpoints    |  `Object`            | `false`   |  `{}`    |
+Name           |   type               | required  | default  
+-----          | -------------------- | --------- | -------- 
+pagination     |  Boolean             | `false`   |  `true`  
+perPage        |  `(String, Number)`  | `false`   |    `1`   
+isDraggable    |  Boolean             | `false`   |  `true`  
+isLoopable     |  Boolean             | `false`   |  `false` 
+perPage        |  `(String, Number)`  | `false`   |  `1000`  
+breakpoints    |  `Object`            | `false`   |  `{}`    
 
 ## Contribution
 @convenia team: @guibarscevicius, @lucbic, @iErik-Black
