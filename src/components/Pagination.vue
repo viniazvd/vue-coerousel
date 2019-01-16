@@ -17,12 +17,12 @@ export default {
   inject: ['children', 'data'],
 
   computed: {
-    pagination () {
+    totalPages () {
       return Math.ceil(this.children / this.data.internalPerPage)
     },
 
     containerWidth () {
-      const pagination = this.pagination - 1
+      const pagination = this.totalPages - 1
 
       return { '--width': ((pagination * 10) + (pagination * 5) + 35) + 'px' }
     }
@@ -39,7 +39,7 @@ export default {
 
     goToPage (page) {
       const remainder = this.children % this.data.internalPerPage
-      const diff = (this.pagination === page && remainder && (this.data.internalPerPage - remainder) * this.data.itemSize) || 0
+      const diff = (this.totalPages === page && remainder && (this.data.internalPerPage - remainder) * this.data.itemSize) || 0
 
       this.data.position = -(((page - 1) * 100) - diff)
     }
@@ -47,7 +47,7 @@ export default {
 
   render (h) {
     const button = Array
-      .from({ length: this.pagination }, (_, index) => index + 1)
+      .from({ length: this.totalPages }, (_, index) => index + 1)
       .map(page => {
         return h('div', {
           key: page,
