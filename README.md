@@ -1,31 +1,83 @@
-# vue-coe-carousel
+<h1 align="center">vue-coerousel ✅</h1>
 
-## Project setup
-```
-yarn install
+<p align="center">
+  <a href="#"><img src="https://img.shields.io/npm/l/vuelidation.svg" alt="License" target="_blank"></a>
+</p>
+
+<br>
+
+<p align="center">
+  ✨ <a href="#">Example</a>✨
+</p>
+
+<br>
+
+**Install**
+
+`yarn add vue-coerousel`
+
+<br>
+
+**Use**
+```vue
+<template>
+  <carousel :per-page="2" :breakpoints="breakpoints" :is-loopable="false">
+    <carousel-item v-for="(option, index) in options" :key="index">
+      <div class="ball" :style="{ backgroundColor: option.color }" />
+    </carousel-item>
+  </carousel>
+</template>
+
+<script>
+import Coerousel from 'vue-coerousel'
+
+export default {
+  components: { Coerousel },
+
+  data () {
+    return {
+      options: [
+        { color: 'blue' },
+        { color: 'yellow' },
+        { color: 'red' },
+        { color: 'black' },
+        { color: 'pink' },
+        { color: 'turquoise' },
+        { color: 'magenta' },
+        { color: 'white' },
+        { color: 'orange' },
+        { color: 'green' },
+        { color: 'purple' },
+        { color: 'cyan' },
+        { color: 'lime' },
+        { color: 'lightblue' }
+      ],
+      breakpoints: {
+        1024: { perPage: 4 },
+        768: { perPage: 3 },
+        640: { perPage: 2 },
+        320: { perPage: 1 }
+      }
+    }
+}
+</script>
 ```
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
+<br>
 
-### Compiles and minifies for production
-```
-yarn run build
-```
+## Props
 
-### Run your tests
-```
-yarn run test
-```
+Name           |   type               | required  | default  | About
+-----          | -------------------- | --------- | -------- | -------
+date           |  `(String, Object)`  |  `true`   | 
+pagination     |  Boolean             | `false`   |  `true`  |
+perPage        |  `(String, Number)`  | `false`   |    `1`   |
+isDraggable    |  Boolean             | `false`   |  `true`  |
+isLoopable     |  Boolean             | `false`   |  `false` |
+perPage        |  `(String, Number)`  | `false`   |  `1000`  |
+breakpoints    |  `Object`            | `false`   |  `{}`    |
 
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Run your unit tests
-```
-yarn run test:unit
-```
+## Contribution
+- @guibarscevicius
+- @lucbic
+- @iErik #sqn
