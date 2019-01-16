@@ -29,9 +29,9 @@ export default {
 
 <style lang="scss">
 .carousel-item {
+  display: flex;
   user-select: none;
   outline: none;
-  width: 300px;
   overflow: hidden;
 }
 </style>
