@@ -1,19 +1,19 @@
-
-<template>
-  <div class="vue-coerousel">
-    position: {{ position }}
-
-    <div class="wrapper">
-      <div class="inner" :style="style" @mousedown="mousedown">
-        <slot></slot>
-      </div>
-    </div>
-
-    <pagination v-if="pagination" />
-  </div>
-</template>
-
 <script>
+
+// <template>
+//   <div class="vue-coerousel">
+//     position: {{ position }}
+
+//     <div class="wrapper">
+//       <div class="inner" :style="style" @mousedown="mousedown">
+//         <slot></slot>
+//       </div>
+//     </div>
+
+//     <pagination v-if="pagination" />
+//   </div>
+// </template>
+
 import Pagination from './components/Pagination'
 
 export default {
@@ -146,6 +146,16 @@ export default {
       this.initPosition = null
       window.removeEventListener('mousemove', this.mousemove)
     }
+  },
+
+  render (h) {
+    const inner = h('div', { staticClass: 'inner', style: this.style, on: { mousedown: this.mousedown } }, this.$slots.default)
+
+    const wrapper = h('div', { staticClass: 'wrapper' }, [ inner ])
+
+    const pagination = this.pagination && h(Pagination)
+
+    return h('div', { staticClass: 'vue-coerousel' }, [ wrapper, pagination ])
   },
 
   beforeDestroy () {
