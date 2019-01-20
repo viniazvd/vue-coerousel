@@ -21,11 +21,11 @@
 **Use**
 ```vue
 <template>
-  <carousel :per-page="2" :breakpoints="breakpoints" :is-loopable="false">
-    <carousel-item v-for="(option, index) in options" :key="index">
+  <coerousel :per-page="2" :breakpoints="breakpoints" :is-loopable="false">
+    <coerousel-item v-for="(option, index) in options" :key="index">
       <div class="ball" :style="{ backgroundColor: option.color }" />
-    </carousel-item>
-  </carousel>
+    </coerousel-item>
+  </coerousel>
 </template>
 
 <script>
