@@ -42,14 +42,22 @@ export default {
     breakpoints: {
       type: Object,
       default: () => ({})
-    }
+    },
+    friction: {
+      type: Number,
+      default: 0.9
+    },
+    centerAfterDragging: Boolean
   },
 
   data () {
     return {
-      initPosition: null,
+      initPosition: 0,
       position: 0,
-      currentWidth: 0
+      currentWidth: 0,
+
+      acceleration: 0.7,
+      inertia: false
     }
   },
 
@@ -65,6 +73,8 @@ export default {
   },
 
   mounted () {
+    this.startAnimation()
+
     this.isLoopable && this.initLoop()
 
     this.hasBreakpoints && this.setCurrentWidth({ target: { innerWidth: document.body.clientWidth } })
@@ -100,6 +110,36 @@ export default {
   },
 
   methods: {
+    fixPosition () {
+      const position = this.position / this.itemSize
+
+      const isCenter = !String(position).split('').includes('.')
+
+      if (!isCenter && this.position >= this.endPosition) this.position = (Math.round(this.position / this.itemSize) * 100) / this.internalPerPage
+    },
+
+    getAcceleration () {
+      const time = 1000
+      const v1 = this.position - this.initPosition
+      const delta = Math.sign(v1) === -1 ? v1 * (- 1) : v1
+
+      return delta / time
+    },
+
+    startAnimation () {
+      requestAnimationFrame(this.startAnimation)
+
+      if (this.inertia) {
+        this.acceleration = this.getAcceleration()
+      } else {
+        this.position += this.acceleration
+        this.acceleration *= this.friction
+      }
+
+      if (this.position > 0) this.position = 0
+      if (this.position < this.endPosition) this.position = this.endPosition
+    },
+
     startLoop () {
       return ~~this.position <= 0 && this.position > this.endPosition
         ? (this.position -= this.itemSize)
@@ -121,41 +161,36 @@ export default {
       const slipped = ~~((clientX / 10) - this.initPosition)
 
       this.position = slipped
-
-      if (this.position > 0) this.position -= slipped
-      if (this.position < this.endPosition) this.position = this.endPosition
     },
 
     mousedown ({ clientX }) {
       if (!this.isDraggable) return false
 
+      this.inertia = true
       this.initPosition = ~~(clientX / 10) - this.position
 
       window.addEventListener('mousemove', this.mousemove)
       window.addEventListener('mouseup', this.mouseup)
     },
 
-    mouseup () { // touchend ?
+    mouseup ({ clientX }) { // touchend ?
       if (!this.isDraggable) return false
+      if (this.centerAfterDragging) this.fixPosition()
 
-      const position = this.position / this.itemSize
-      const isCenter = !String(position).split('').includes('.')
+      this.inertia = false
 
-      if (!isCenter && this.position >= this.endPosition) this.position = (Math.round(this.position / this.itemSize) * 100) / this.internalPerPage
-
-      this.initPosition = null
       window.removeEventListener('mousemove', this.mousemove)
     }
   },
 
   render (h) {
-    const inner = h('div', { staticClass: 'inner', style: this.style, on: { mousedown: this.mousedown } }, this.$slots.default)
+    const inner = h('div', { staticClass: 'inner', ref: 'inner', style: this.style, on: { mousedown: this.mousedown } }, this.$slots.default)
 
-    const wrapper = h('div', { staticClass: 'wrapper' }, [ inner ])
+    const wrapper = h('div', { staticClass: 'wrapper', ref: 'wrapper' }, [ inner ])
 
     const pagination = this.pagination && h(Pagination)
 
-    return h('div', { staticClass: 'vue-coerousel' }, [ wrapper, pagination ])
+    return h('div', { staticClass: 'vue-coerousel' }, [ [ h('span', null, `position: ${this.position}`) ], wrapper, pagination ])
   },
 
   beforeDestroy () {
