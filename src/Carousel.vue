@@ -45,7 +45,7 @@ export default {
     },
     friction: {
       type: Number,
-      default: 0.9
+      default: 0.95
     },
     centerAfterDragging: Boolean
   },
@@ -55,9 +55,9 @@ export default {
       initPosition: 0,
       position: 0,
       currentWidth: 0,
-
-      acceleration: 0.7,
-      inertia: false
+      acceleration: 0,
+      inertia: false,
+      events: {}
     }
   },
 
@@ -73,7 +73,11 @@ export default {
   },
 
   mounted () {
-    this.startAnimation()
+    this.events = {
+      'start': this.isMobile() ? 'touchstart' : 'mousedown',
+      'move': this.isMobile() ? 'touchmove' : 'mousemove',
+      'end': this.isMobile() ? 'touchend' : 'mouseup'
+    }
 
     this.isLoopable && this.initLoop()
 
@@ -104,6 +108,12 @@ export default {
       return this.hasBreakpoints && breakpoints[width] ? breakpoints[width].perPage : this.perPage
     },
 
+    currentPage () {
+      const position = ~~this.position * (- 1)
+
+      return Math.ceil(position / 100) + 1
+    },
+
     style () {
       return { transform: `translateX(${this.position}%)` }
     }
@@ -120,24 +130,28 @@ export default {
 
     getAcceleration () {
       const time = 1000
+      // console.log(this.currentPage * 100)
       const v1 = this.position - this.initPosition
+      // console.log('v1', v1)
       const delta = Math.sign(v1) === -1 ? v1 * (- 1) : v1
 
       return delta / time
     },
 
-    startAnimation () {
-      requestAnimationFrame(this.startAnimation)
+    isMobile () {
+      return /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp2|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent)
+    },
 
+    startAnimation () {
       if (this.inertia) {
-        this.acceleration = this.getAcceleration()
-      } else {
         this.position += this.acceleration
         this.acceleration *= this.friction
-      }
 
-      if (this.position > 0) this.position = 0
-      if (this.position < this.endPosition) this.position = this.endPosition
+        // if (this.position > 0) this.position = 0
+        // if (this.position < this.endPosition) this.position = this.endPosition
+
+        requestAnimationFrame(this.startAnimation)
+      }
     },
 
     startLoop () {
@@ -157,34 +171,61 @@ export default {
       if (innerWidth <= 640 && innerWidth >= 320) this.currentWidth = 320
     },
 
-    mousemove ({ clientX }) {
-      const slipped = ~~((clientX / 10) - this.initPosition)
+    getX (e) {
+      return (e.changedTouches && e.changedTouches[0] && e.changedTouches[0].clientX) || e.clientX
+    },
+
+    mousemove (e) {
+      const x = this.getX(e)
+
+      const containerWidth = ~~(this.$refs['inner'].clientWidth / 100)
+
+      const slipped = ~~((x / containerWidth) - this.initPosition)
 
       this.position = slipped
+
+      if (this.position > 0) this.position = 0
+      if (this.position < this.endPosition) this.position = this.endPosition
     },
 
-    mousedown ({ clientX }) {
+    mousedown (e) {
       if (!this.isDraggable) return false
 
-      this.inertia = true
-      this.initPosition = ~~(clientX / 10) - this.position
+      // console.log(e.timeStamp)
 
-      window.addEventListener('mousemove', this.mousemove)
-      window.addEventListener('mouseup', this.mouseup)
+      const containerWidth = ~~(this.$refs['inner'].clientWidth / 100)
+
+      const x = this.getX(e)
+
+      this.inertia = true
+      this.initPosition = ~~(x / containerWidth) - this.position
+
+      window.addEventListener(this.events['move'], this.mousemove)
+      window.addEventListener(this.events['end'], this.mouseup)
     },
 
-    mouseup ({ clientX }) { // touchend ?
+    mouseup () {
       if (!this.isDraggable) return false
       if (this.centerAfterDragging) this.fixPosition()
 
-      this.inertia = false
+      // this.acceleration = 0.7
+      // this.startAnimation()
 
-      window.removeEventListener('mousemove', this.mousemove)
+      // setTimeout(() => { this.inertia = false }, 2000)
+
+      window.removeEventListener(this.events['move'], this.mousemove)
     }
   },
 
   render (h) {
-    const inner = h('div', { staticClass: 'inner', ref: 'inner', style: this.style, on: { mousedown: this.mousedown } }, this.$slots.default)
+    const inner = h('div', {
+      staticClass: 'inner',
+      ref: 'inner',
+      style: this.style,
+      on: {
+        [this.events['start']]: this.mousedown
+      }
+    }, this.$slots.default)
 
     const wrapper = h('div', { staticClass: 'wrapper', ref: 'wrapper' }, [ inner ])
 
