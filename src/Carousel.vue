@@ -57,6 +57,7 @@ export default {
       currentWidth: 0,
       acceleration: 0,
       inertia: false,
+      startTime: 0,
       events: {}
     }
   },
@@ -128,31 +129,26 @@ export default {
       if (!isCenter && this.position >= this.endPosition) this.position = (Math.round(this.position / this.itemSize) * 100) / this.internalPerPage
     },
 
-    getAcceleration () {
-      const time = 1000
-      // console.log(this.currentPage * 100)
-      const v1 = this.position - this.initPosition
-      // console.log('v1', v1)
-      const delta = Math.sign(v1) === -1 ? v1 * (- 1) : v1
+    // getAcceleration () {
+    //   const time = 1000
+    //   const v1 = this.position - this.initPosition
+    //   const delta = Math.sign(v1) === -1 ? v1 * (- 1) : v1
 
-      return delta / time
-    },
+    //   return delta / time
+    // },
 
     isMobile () {
       return /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp2|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent)
     },
 
-    startAnimation () {
-      if (this.inertia) {
-        this.position += this.acceleration
-        this.acceleration *= this.friction
+    // startAnimation () {
+    //   if (this.inertia) {
+    //     this.position += this.acceleration
+    //     this.acceleration *= this.friction
 
-        // if (this.position > 0) this.position = 0
-        // if (this.position < this.endPosition) this.position = this.endPosition
-
-        requestAnimationFrame(this.startAnimation)
-      }
-    },
+    //     requestAnimationFrame(this.startAnimation)
+    //   }
+    // },
 
     startLoop () {
       return ~~this.position <= 0 && this.position > this.endPosition
@@ -191,26 +187,24 @@ export default {
     mousedown (e) {
       if (!this.isDraggable) return false
 
-      // console.log(e.timeStamp)
-
       const containerWidth = ~~(this.$refs['inner'].clientWidth / 100)
-
       const x = this.getX(e)
 
-      this.inertia = true
+      // this.inertia = true
+      // this.startTime = e.timeStamp
+
       this.initPosition = ~~(x / containerWidth) - this.position
 
       window.addEventListener(this.events['move'], this.mousemove)
       window.addEventListener(this.events['end'], this.mouseup)
     },
 
-    mouseup () {
+    mouseup (e) {
       if (!this.isDraggable) return false
       if (this.centerAfterDragging) this.fixPosition()
 
-      // this.acceleration = 0.7
+      // this.acceleration = (this.position - this.initPosition) / (e.timeStamp - this.startTime)
       // this.startAnimation()
-
       // setTimeout(() => { this.inertia = false }, 2000)
 
       window.removeEventListener(this.events['move'], this.mousemove)
