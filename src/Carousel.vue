@@ -47,7 +47,7 @@ export default {
     },
     friction: {
       type: Number,
-      default: 0.95
+      default: 0.97
     },
     centerAfterDragging: Boolean
   },
@@ -57,9 +57,10 @@ export default {
       initPosition: 0,
       position: 0,
       currentWidth: 0,
-      acceleration: 0,
-      inertia: false,
-      startTime: 0,
+      // velocity: 0,
+      // inertia: false,
+      // startTime: 0,
+      // endTime: 0,
       events: {}
     }
   },
@@ -137,20 +138,27 @@ export default {
       if (!isCenter && this.position >= this.endPosition) this.position = (Math.round(this.position / this.itemSize) * 100) / this.internalPerPage
     },
 
-    // getAcceleration () {
-    //   const time = 1000
-    //   const v1 = this.position - this.initPosition
+    // getVelocity () {
+    //   const time = -~~(this.startTime - this.endTime)
+    //   const v1 = this.initPosition - this.position
     //   const delta = Math.sign(v1) === -1 ? v1 * (- 1) : v1
 
-    //   return delta / time
+    //   return Math.abs(delta / time)
     // },
 
     // startAnimation () {
+    //   this.velocity = this.getVelocity()
+
     //   if (this.inertia) {
-    //     this.position += this.acceleration
-    //     this.acceleration *= this.friction
+    //     this.position += this.velocity
+    //     this.velocity *= this.friction
+
+    //     if (this.position > 0) this.position = 0
+    //     if (this.position < this.endPosition) this.position = this.endPosition
 
     //     requestAnimationFrame(this.startAnimation)
+    //   } else {
+    //     return false
     //   }
     // },
 
@@ -192,7 +200,7 @@ export default {
       const x = this.getX(e)
 
       // this.inertia = true
-      // this.startTime = e.timeStamp
+      // this.startTime = new Date().getTime() // e.timeStamp
 
       this.initPosition = ~~(x / this.containerWidth) - this.position
 
@@ -204,9 +212,11 @@ export default {
       if (!this.isDraggable) return false
       if (this.centerAfterDragging) this.fixPosition()
 
-      // this.acceleration = (this.position - this.initPosition) / (e.timeStamp - this.startTime)
+      // this.endTime = new Date().getTime() // e.timeStamp
+
       // this.startAnimation()
-      // setTimeout(() => { this.inertia = false }, 2000)
+
+      // setTimeout(() => { this.inertia = false }, 1000)
 
       window.removeEventListener(this.events['move'], this.mousemove)
     }
@@ -246,7 +256,9 @@ export default {
 
     & > .inner {
       display: flex;
-      transition: transform .3s;
+      // transition: transform .3s;
+      // -webkit-transition: all 600ms cubic-bezier(0.47, 0, 0.745, 0.715);
+      // transition:         all 600ms cubic-bezier(0.47, 0, 0.745, 0.715);
     }
   }
 }
