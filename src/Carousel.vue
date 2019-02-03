@@ -16,6 +16,8 @@
 
 import Pagination from './components/Pagination.vue'
 
+import { isMobile } from './services'
+
 export default {
   name: 'vue-coerousel',
 
@@ -75,9 +77,9 @@ export default {
 
   mounted () {
     this.events = {
-      'start': this.isMobile() ? 'touchstart' : 'mousedown',
-      'move': this.isMobile() ? 'touchmove' : 'mousemove',
-      'end': this.isMobile() ? 'touchend' : 'mouseup'
+      'start': isMobile() ? 'touchstart' : 'mousedown',
+      'move': isMobile() ? 'touchmove' : 'mousemove',
+      'end': isMobile() ? 'touchend' : 'mouseup'
     }
 
     this.isLoopable && this.initLoop()
@@ -115,6 +117,12 @@ export default {
       return Math.ceil(position / 100) + 1
     },
 
+    containerWidth () {
+      if (!this.$refs['inner']) return 0
+
+      return ~~(this.$refs['inner'].clientWidth / 100)
+    },
+
     style () {
       return { transform: `translateX(${this.position}%)` }
     }
@@ -136,10 +144,6 @@ export default {
 
     //   return delta / time
     // },
-
-    isMobile () {
-      return /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp2|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent)
-    },
 
     // startAnimation () {
     //   if (this.inertia) {
@@ -174,9 +178,7 @@ export default {
     mousemove (e) {
       const x = this.getX(e)
 
-      const containerWidth = ~~(this.$refs['inner'].clientWidth / 100)
-
-      const slipped = ~~((x / containerWidth) - this.initPosition)
+      const slipped = ~~((x / this.containerWidth) - this.initPosition)
 
       this.position = slipped
 
@@ -187,13 +189,12 @@ export default {
     mousedown (e) {
       if (!this.isDraggable) return false
 
-      const containerWidth = ~~(this.$refs['inner'].clientWidth / 100)
       const x = this.getX(e)
 
       // this.inertia = true
       // this.startTime = e.timeStamp
 
-      this.initPosition = ~~(x / containerWidth) - this.position
+      this.initPosition = ~~(x / this.containerWidth) - this.position
 
       window.addEventListener(this.events['move'], this.mousemove)
       window.addEventListener(this.events['end'], this.mouseup)
