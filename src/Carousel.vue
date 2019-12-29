@@ -16,7 +16,7 @@
 
 import Pagination from './components/Pagination.vue'
 
-import { isMobile } from './services'
+import { isMobile, setProvide } from './services'
 
 export default {
   name: 'vue-coerousel',
@@ -66,14 +66,10 @@ export default {
   },
 
   provide () {
-    const options = {}
-
-    const define = (name, get) => Object.defineProperty(options, name, { get, enumerable: true })
-
-    define('children', () => this.$children.length - 1)
-    define('data', () => this)
-
-    return options
+    return setProvide([
+      { name: 'data', get: this },
+      { name: 'children', get: this.$children.length - 1 }
+    ])
   },
 
   mounted () {
