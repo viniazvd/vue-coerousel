@@ -16,7 +16,7 @@
 
 import Pagination from './components/Pagination.vue'
 
-import { isMobile, setProvide } from './services'
+import { setEvents, setProvide } from './services'
 
 export default {
   name: 'vue-coerousel',
@@ -73,11 +73,7 @@ export default {
   },
 
   mounted () {
-    this.events = {
-      'start': isMobile() ? 'touchstart' : 'mousedown',
-      'move': isMobile() ? 'touchmove' : 'mousemove',
-      'end': isMobile() ? 'touchend' : 'mouseup'
-    }
+    this.events = setEvents
 
     this.isLoopable && this.initLoop()
 
