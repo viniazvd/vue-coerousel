@@ -55,13 +55,13 @@ export default {
   data () {
     return {
       initPosition: 0,
-      position: 0,
       currentWidth: 0,
-      // velocity: 0,
-      // inertia: false,
-      // startTime: 0,
-      // endTime: 0,
-      events: {}
+      events: {},
+      dragging: false,
+      mouse: { x: 0, y: 0 },
+      position: { x: 0, y: 0 },
+      velocity: { x: 0, y: 0 },
+      previous: { x: 0, y: 0 }
     }
   },
 
@@ -80,6 +80,7 @@ export default {
     this.hasBreakpoints && this.setCurrentWidth({ target: { innerWidth: document.body.clientWidth } })
 
     window.addEventListener('resize', this.setCurrentWidth)
+    this.step()
   },
 
   computed: {
@@ -105,9 +106,9 @@ export default {
     },
 
     currentPage () {
-      const position = ~~this.position * (- 1)
+      const position = ~~this.position.x * (- 1)
 
-      return Math.ceil(position / 100) + 1
+      return Math.ceil(position.x / 100) + 1
     },
 
     containerWidth () {
@@ -117,42 +118,18 @@ export default {
     },
 
     style () {
-      return { transform: `translateX(${this.position}%)` }
+      return { transform: `translateX(${this.position.x}%)` }
     }
   },
 
   methods: {
     fixPosition () {
-      const position = this.position / this.itemSize
+      const position = this.position.x / this.itemSize
 
       const isCenter = !String(position).split('').includes('.')
 
-      if (!isCenter && this.position >= this.endPosition) this.position = (Math.round(this.position / this.itemSize) * 100) / this.internalPerPage
+      if (!isCenter && this.position.x >= this.endPosition.x) this.position.x = (Math.round(this.position.x / this.itemSize) * 100) / this.internalPerPage
     },
-
-    // getVelocity () {
-    //   const time = -~~(this.startTime - this.endTime)
-    //   const v1 = this.initPosition - this.position
-    //   const delta = Math.sign(v1) === -1 ? v1 * (- 1) : v1
-
-    //   return Math.abs(delta / time)
-    // },
-
-    // startAnimation () {
-    //   this.velocity = this.getVelocity()
-
-    //   if (this.inertia) {
-    //     this.position += this.velocity
-    //     this.velocity *= this.friction
-
-    //     if (this.position > 0) this.position = 0
-    //     if (this.position < this.endPosition) this.position = this.endPosition
-
-    //     requestAnimationFrame(this.startAnimation)
-    //   } else {
-    //     return false
-    //   }
-    // },
 
     startLoop () {
       return ~~this.position <= 0 && this.position > this.endPosition
@@ -175,40 +152,63 @@ export default {
       return (e.changedTouches && e.changedTouches[0] && e.changedTouches[0].clientX) || e.clientX
     },
 
+    step() {
+      requestAnimationFrame(this.step)
+
+      const FRICTION_COEFF = 0.85
+
+      if (this.dragging) {
+        this.previous.x = this.position.x
+        // this.previous.y = this.position.y
+
+        this.position.x = this.mouse.x
+        // this.position.y = this.mouse.y
+
+        this.velocity.x = (this.position.x - this.previous.x)
+        // this.velocity.y = (this.position.y - this.previous.y)
+        console.log('1')
+      } else {
+        this.position.x += this.velocity.x
+        // this.position.y += this.velocity.y
+
+        this.velocity.x *= FRICTION_COEFF
+        // this.velocity.y *= FRICTION_COEFF
+        console.log('2')
+      }
+
+      if (this.position.x > 0) this.position.x = 0
+      if (this.position.x < this.endPosition) this.position.x = this.endPosition
+    },
+
     mousemove (e) {
+      console.log('move')
       const x = this.getX(e)
 
       const slipped = ~~((x / this.containerWidth) - this.initPosition)
+      console.log({ slipped })
 
-      this.position = slipped
-
-      if (this.position > 0) this.position = 0
-      if (this.position < this.endPosition) this.position = this.endPosition
+      this.mouse.x = slipped
     },
 
     mousedown (e) {
-      if (!this.isDraggable) return false
+      console.log('down')
+      // if (!this.dragging) return false
+      this.dragging = true
 
       const x = this.getX(e)
 
-      // this.inertia = true
-      // this.startTime = new Date().getTime() // e.timeStamp
-
-      this.initPosition = ~~(x / this.containerWidth) - this.position
+      this.initPosition = ~~(x / this.containerWidth) - this.mouse.x
 
       window.addEventListener(this.events['move'], this.mousemove)
       window.addEventListener(this.events['end'], this.mouseup)
     },
 
     mouseup (e) {
-      if (!this.isDraggable) return false
+      console.log('up')
+      this.dragging = false
+      // this.mouse.x = 0
+      // if (!this.isDraggable) return false
       if (this.centerAfterDragging) this.fixPosition()
-
-      // this.endTime = new Date().getTime() // e.timeStamp
-
-      // this.startAnimation()
-
-      // setTimeout(() => { this.inertia = false }, 1000)
 
       window.removeEventListener(this.events['move'], this.mousemove)
     }
@@ -228,7 +228,9 @@ export default {
 
     const pagination = this.pagination && h(Pagination)
 
-    return h('div', { staticClass: 'vue-coerousel' }, [ [ h('span', null, `position: ${this.position}`) ], wrapper, pagination ])
+    return h('div', { staticClass: 'vue-coerousel' }, [
+      [ h('span', null, `position: ${this.position.x} - previous: ${this.previous.x} - mouse ${this.mouse.x}-velocity ${this.velocity.x}`) ]
+      , wrapper, pagination ])
   },
 
   beforeDestroy () {
