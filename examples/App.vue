@@ -1,21 +1,21 @@
 <template>
   <div id="app">
     <carousel :per-page="2" :is-loopable="false">
-      <carousel-item v-for="(option, index) in options" :key="index">
+      <slide v-for="(option, index) in options" :key="index">
         <div class="ball" :style="{ backgroundColor: option.color }" />
-      </carousel-item>
+      </slide>
     </carousel>
   </div>
 </template>
 
 <script>
-import Carousel from '../src/Carousel.vue'
-import CarouselItem from '../src/components/CarouselItem.vue'
+import Carousel from '../src/components/Carousel.vue'
+import Slide from '../src/components/Slide.vue'
 
 export default {
   name: 'app',
 
-  components: { Carousel, CarouselItem },
+  components: { Carousel, Slide },
 
   data () {
     return {

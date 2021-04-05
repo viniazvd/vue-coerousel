@@ -12,7 +12,7 @@
 // </template>
 
 export default {
-  name: 'pagination',
+  name: 'Pagination',
 
   inject: ['children', 'data'],
 
