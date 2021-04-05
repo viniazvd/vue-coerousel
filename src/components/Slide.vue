@@ -7,7 +7,7 @@
 // </template>
 
 export default {
-  name: 'carousel-item',
+  name: 'Slide',
 
   inject: ['data'],
 

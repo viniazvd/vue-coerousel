@@ -14,12 +14,12 @@
 //   </div>
 // </template>
 
-import Pagination from './components/Pagination.vue'
+import Pagination from './Pagination.vue'
 
-import { isMobile } from './services'
+import { isMobile } from '../services'
 
 export default {
-  name: 'vue-coerousel',
+  name: 'Carousel',
 
   components: { Pagination },
 
