@@ -5,7 +5,7 @@ const autoprefixer = require('autoprefixer')
 
 module.exports = {
   js: 'buble',
-  input: 'src/Carousel.vue',
+  input: 'src/index.js',
   format: [ 'es', 'cjs', 'umd' ],
   plugins: [
     Vue({
