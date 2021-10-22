@@ -215,15 +215,37 @@ var render = function() {
       _c(
         "carousel",
         { attrs: { "per-page": 2, "is-loopable": false } },
-        _vm._l(_vm.options, function(option, index) {
-          return _c("carousel-item", { key: index }, [
-            _c("div", {
-              staticClass: "ball",
-              style: { backgroundColor: option.color }
-            })
-          ])
-        }),
-        1
+        [
+          _c(
+            "div",
+            {
+              staticClass: "controller",
+              attrs: { slot: "previous" },
+              slot: "previous"
+            },
+            [_c("span", [_vm._v("X")])]
+          ),
+          _vm._v(" "),
+          _vm._l(_vm.options, function(option, index) {
+            return _c("carousel-item", { key: index }, [
+              _c("div", {
+                staticClass: "ball",
+                style: { backgroundColor: option.color }
+              })
+            ])
+          }),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "controller",
+              attrs: { slot: "next" },
+              slot: "next"
+            },
+            [_c("span", [_vm._v("X")])]
+          )
+        ],
+        2
       )
     ],
     1
@@ -248,7 +270,7 @@ exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/li
 
 
 // module
-exports.push([module.i, ".ball {\n  width: 300px;\n  height: 300px;\n  margin: 0 auto;\n  border-radius: 50%;\n}\n", "", {"version":3,"sources":["/home/viniazvd/vue-coerousel/examples/App.vue"],"names":[],"mappings":"AAsDA;EACE,aAAY;EACZ,cAAa;EACb,eAAc;EACd,mBAAkB;CACnB","file":"App.vue?vue&type=style&index=0&lang=scss&","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n// #app {\n//   max-width: 900px;\n//   margin: 0 auto;\n// }\n\n.ball {\n  width: 300px;\n  height: 300px;\n  margin: 0 auto;\n  border-radius: 50%;\n}\n"],"sourceRoot":""}]);
+exports.push([module.i, ".ball {\n  width: 300px;\n  height: 300px;\n  margin: 0 auto;\n  border-radius: 50%;\n}\n.controller2 {\n  display: flex;\n  align-items: center;\n}\n", "", {"version":3,"sources":["/home/viniazvd/vue-coerousel/examples/App.vue"],"names":[],"mappings":"AA8DA;EACE,aAAY;EACZ,cAAa;EACb,eAAc;EACd,mBAAkB;CACnB;AAED;EACE,cAAa;EACb,oBAAmB;CACpB","file":"App.vue?vue&type=style&index=0&lang=scss&","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n// #app {\n//   max-width: 900px;\n//   margin: 0 auto;\n// }\n\n.ball {\n  width: 300px;\n  height: 300px;\n  margin: 0 auto;\n  border-radius: 50%;\n}\n\n.controller2 {\n  display: flex;\n  align-items: center;\n}\n"],"sourceRoot":""}]);
 
 // exports
 
@@ -267,7 +289,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".vue-coerousel {\n  position: relative;\n}\n.vue-coerousel > .next {\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    background-color: red;\n    position: absolute;\n    left: 10px;\n    top: 100px;\n}\n.vue-coerousel > .previous {\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    background-color: red;\n    position: absolute;\n    right: 10px;\n    top: 100px;\n}\n.vue-coerousel > .wrapper {\n    overflow: hidden;\n    max-height: 300px;\n    background-color: gray;\n}\n.vue-coerousel > .wrapper > .inner {\n      display: flex;\n}\n", "", {"version":3,"sources":["/home/viniazvd/vue-coerousel/src/components/Carousel.vue"],"names":[],"mappings":"AAkRA;EACE,mBAAkB;CAoCnB;AArCD;IAKI,YAAW;IACX,aAAY;IACZ,mBAAkB;IAClB,sBAAqB;IAErB,mBAAkB;IAClB,WAAU;IACV,WAAU;CACX;AAbH;IAeI,YAAW;IACX,aAAY;IACZ,mBAAkB;IAClB,sBAAqB;IAErB,mBAAkB;IAClB,YAAW;IACX,WAAU;CACX;AAvBH;IA0BI,iBAAgB;IAChB,kBAAiB;IACjB,uBAAsB;CAQvB;AApCH;MA+BM,cAAa;CAId","file":"Carousel.vue?vue&type=style&index=0&lang=scss&","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.vue-coerousel {\n  position: relative;\n  // ...\n\n  & > .next {\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    background-color: red;\n\n    position: absolute;\n    left: 10px;\n    top: 100px;\n  }\n  & > .previous {\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    background-color: red;\n\n    position: absolute;\n    right: 10px;\n    top: 100px;\n  }\n\n  & > .wrapper {\n    overflow: hidden;\n    max-height: 300px;\n    background-color: gray;\n\n    & > .inner {\n      display: flex;\n      // transition: transform .3s;\n      // -webkit-transition: all 600ms cubic-bezier(0.47, 0, 0.745, 0.715);\n      // transition:         all 600ms cubic-bezier(0.47, 0, 0.745, 0.715);\n    }\n  }\n}\n"],"sourceRoot":""}]);
+exports.push([module.i, ".vue-coerousel {\n  position: relative;\n}\n.vue-coerousel > .controller {\n    z-index: 1;\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    border: 1px solid black;\n    position: absolute;\n    top: 50%;\n    transform: translateY(-50%);\n}\n.vue-coerousel > .previous {\n    left: 10px;\n}\n.vue-coerousel > .next {\n    right: 10px;\n}\n.vue-coerousel > .wrapper {\n    overflow: hidden;\n}\n.vue-coerousel > .wrapper > .inner {\n      display: flex;\n      transition: transform .3s;\n}\n", "", {"version":3,"sources":["/home/viniazvd/vue-coerousel/src/components/Carousel.vue"],"names":[],"mappings":"AAqRA;EACE,mBAAkB;CA6BnB;AA9BD;IAII,WAAU;IACV,YAAW;IACX,aAAY;IACZ,mBAAkB;IAClB,wBAAuB;IAEvB,mBAAkB;IAClB,SAAQ;IACR,4BAA2B;CAC5B;AAbH;IAekB,WAAU;CAAI;AAfhC;IAgBc,YAAW;CAAI;AAhB7B;IAmBI,iBAAgB;CAUjB;AA7BH;MAwBM,cAAa;MACb,0BAAyB;CAG1B","file":"Carousel.vue?vue&type=style&index=0&lang=scss&","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.vue-coerousel {\n  position: relative;\n\n  & > .controller {\n    z-index: 1;\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    border: 1px solid black;\n\n    position: absolute;\n    top: 50%;\n    transform: translateY(-50%);\n  }\n\n  & > .previous { left: 10px; }\n  & > .next { right: 10px; }\n\n  & > .wrapper {\n    overflow: hidden;\n    // max-height: 300px;\n    // background-color: gray;\n\n    & > .inner {\n      display: flex;\n      transition: transform .3s;\n      // -webkit-transition: all 600ms cubic-bezier(0.47, 0, 0.745, 0.715);\n      // transition:         all 600ms cubic-bezier(0.47, 0, 0.745, 0.715);\n    }\n  }\n}\n"],"sourceRoot":""}]);
 
 // exports
 
@@ -420,6 +442,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -514,6 +544,10 @@ __webpack_require__.r(__webpack_exports__);
     pagination: {
       type: Boolean,
       default: true
+    },
+    controllers: {
+      type: Boolean,
+      default: false
     },
     perPage: {
       type: [String, Number],
@@ -666,11 +700,13 @@ __webpack_require__.r(__webpack_exports__);
     },
 
     next() {
-      console.log('next');
+      if (this.position < this.endPosition + 100) return this.position = this.endPosition;
+      this.position -= 100;
     },
 
     previous() {
-      console.log('previous');
+      if (this.position > -100) return this.position = 0;
+      this.position += 100;
     },
 
     mousemove(e) {
@@ -712,13 +748,13 @@ __webpack_require__.r(__webpack_exports__);
       }
     }, this.$slots.default);
     const next = h('div', {
-      staticClass: 'next',
+      staticClass: 'controller next',
       on: {
         click: this.next
       }
     }, this.$slots.next);
     const previous = h('div', {
-      staticClass: 'previous',
+      staticClass: 'controller previous',
       on: {
         click: this.previous
       }
@@ -730,8 +766,8 @@ __webpack_require__.r(__webpack_exports__);
     const pagination = this.pagination && h(_Pagination_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
     return h('div', {
       staticClass: 'vue-coerousel'
-    }, [// [ h('span', null, `position: ${this.position}`) ],
-    previous, wrapper, next, pagination]);
+    }, [// [ h('span', `position: ${this.position}`) ],
+    this.controllers ? previous : false, wrapper, this.controllers ? next : false, pagination]);
   },
 
   beforeDestroy() {
