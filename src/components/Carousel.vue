@@ -28,6 +28,10 @@ export default {
       type: Boolean,
       default: true
     },
+    controllers: {
+      type: Boolean,
+      default: false
+    },
     perPage: {
       type: [String, Number],
       default: 1
@@ -183,6 +187,18 @@ export default {
       return (e.changedTouches && e.changedTouches[0] && e.changedTouches[0].clientX) || e.clientX
     },
 
+    next () {
+      if (this.position < (this.endPosition + 100)) return this.position = this.endPosition
+
+      this.position -= 100
+    },
+
+    previous () {
+      if (this.position > -100) return this.position = 0
+
+      this.position += 100
+    },
+
     mousemove (e) {
       const x = this.getX(e)
 
@@ -232,11 +248,24 @@ export default {
       }
     }, this.$slots.default)
 
+
+    const next = h('div', { staticClass: 'controller next', on: { click: this.next } }, this.$slots.next)
+    const previous = h('div', { staticClass: 'controller previous', on: { click: this.previous } }, this.$slots.previous)
+
     const wrapper = h('div', { staticClass: 'wrapper', ref: 'wrapper' }, [ inner ])
 
     const pagination = this.pagination && h(Pagination)
 
-    return h('div', { staticClass: 'vue-coerousel' }, [ [ h('span', null, `position: ${this.position}`) ], wrapper, pagination ])
+    return h('div',
+      { staticClass: 'vue-coerousel' },
+      [
+        // [ h('span', `position: ${this.position}`) ],
+        this.controllers ? previous : false,
+        wrapper,
+        this.controllers ? next : false,
+        pagination
+      ]
+    )
   },
 
   beforeDestroy () {
@@ -247,16 +276,31 @@ export default {
 
 <style lang="scss">
 .vue-coerousel {
-  // ...
+  position: relative;
+
+  & > .controller {
+    z-index: 1;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid black;
+
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  & > .previous { left: 10px; }
+  & > .next { right: 10px; }
 
   & > .wrapper {
     overflow: hidden;
-    max-height: 300px;
-    background-color: gray;
+    // max-height: 300px;
+    // background-color: gray;
 
     & > .inner {
       display: flex;
-      // transition: transform .3s;
+      transition: transform .3s;
       // -webkit-transition: all 600ms cubic-bezier(0.47, 0, 0.745, 0.715);
       // transition:         all 600ms cubic-bezier(0.47, 0, 0.745, 0.715);
     }

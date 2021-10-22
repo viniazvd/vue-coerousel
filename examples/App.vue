@@ -1,21 +1,29 @@
 <template>
   <div id="app">
     <carousel :per-page="2" :is-loopable="false">
-      <slide v-for="(option, index) in options" :key="index">
+      <div class="controller" slot="previous">
+        <span>X</span>
+      </div>
+
+      <carousel-item v-for="(option, index) in options" :key="index">
         <div class="ball" :style="{ backgroundColor: option.color }" />
-      </slide>
+      </carousel-item>
+
+      <div class="controller" slot="next">
+        <span>X</span>
+      </div>
     </carousel>
   </div>
 </template>
 
 <script>
 import Carousel from '../src/components/Carousel.vue'
-import Slide from '../src/components/Slide.vue'
+import CarouselItem from '../src/components/CarouselItem.vue'
 
 export default {
   name: 'app',
 
-  components: { Carousel, Slide },
+  components: { Carousel, CarouselItem },
 
   data () {
     return {
@@ -57,5 +65,10 @@ export default {
   height: 300px;
   margin: 0 auto;
   border-radius: 50%;
+}
+
+.controller2 {
+  display: flex;
+  align-items: center;
 }
 </style>

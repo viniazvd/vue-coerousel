@@ -7,7 +7,7 @@
 // </template>
 
 export default {
-  name: 'Slide',
+  name: 'Item',
 
   inject: ['data'],
 
