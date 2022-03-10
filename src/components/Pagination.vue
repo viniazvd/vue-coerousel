@@ -14,11 +14,11 @@
 export default {
   name: 'Pagination',
 
-  inject: ['children', 'data'],
+  inject: ['items', 'data'],
 
   computed: {
     totalPages () {
-      return Math.ceil(this.children / this.data.internalPerPage)
+      return Math.ceil(this.items / this.data.internalPerPage)
     },
 
     containerWidth () {
@@ -38,7 +38,7 @@ export default {
     },
 
     goToPage (page) {
-      const remainder = this.children % this.data.internalPerPage
+      const remainder = this.items % this.data.internalPerPage
       const diff = (this.totalPages === page && remainder && (this.data.internalPerPage - remainder) * this.data.itemSize) || 0
 
       this.data.position = -(((page - 1) * 100) - diff)

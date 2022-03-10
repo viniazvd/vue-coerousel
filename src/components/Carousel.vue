@@ -74,7 +74,7 @@ export default {
 
     const define = (name, get) => Object.defineProperty(options, name, { get, enumerable: true })
 
-    define('children', () => this.$children.length - 1)
+    define('items', () => this.$slots.default.length)
     define('data', () => this)
 
     return options
@@ -100,7 +100,7 @@ export default {
     },
 
     endPosition () {
-      const itemsNum = this.$children.length
+      const itemsNum = this.$slots.default.length
 
       return -(this.itemSize * itemsNum) + (100 + this.itemSize)
     },
