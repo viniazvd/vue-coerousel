@@ -594,8 +594,10 @@ __webpack_require__.r(__webpack_exports__);
       enumerable: true
     });
 
-    define('children', () => this.$children.length - 1);
     define('data', () => this);
+    define('items', () => this.$slots.default.filter(({
+      tag
+    }) => tag === 'vue-component-2-Item').length);
     return options;
   },
 
@@ -620,7 +622,9 @@ __webpack_require__.r(__webpack_exports__);
     },
 
     endPosition() {
-      const itemsNum = this.$children.length;
+      const itemsNum = this.$slots.default.filter(({
+        tag
+      }) => tag === 'vue-component-2-Item').length;
       return -(this.itemSize * itemsNum) + (100 + this.itemSize);
     },
 
@@ -840,10 +844,10 @@ __webpack_require__.r(__webpack_exports__);
 // </template>
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Pagination',
-  inject: ['children', 'data'],
+  inject: ['items', 'data'],
   computed: {
     totalPages() {
-      return Math.ceil(this.children / this.data.internalPerPage);
+      return Math.ceil(this.items / this.data.internalPerPage);
     },
 
     containerWidth() {
@@ -862,7 +866,7 @@ __webpack_require__.r(__webpack_exports__);
     },
 
     goToPage(page) {
-      const remainder = this.children % this.data.internalPerPage;
+      const remainder = this.items % this.data.internalPerPage;
       const diff = this.totalPages === page && remainder && (this.data.internalPerPage - remainder) * this.data.itemSize || 0;
       this.data.position = -((page - 1) * 100 - diff);
     }
