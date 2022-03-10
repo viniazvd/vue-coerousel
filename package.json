@@ -9,7 +9,7 @@
   "umd:main": "dist/vue-coerousel.js",
   "scripts": {
     "test": "yarn build && NODE_ENV=test jest",
-    "serve": "yarn build && poi --serve examples/main.js",
+    "dev": "yarn build && poi --serve examples/main.js",
     "build": "bili",
     "postbuild": "poi"
   },
