@@ -805,7 +805,7 @@ __webpack_require__.r(__webpack_exports__);
     endPosition() {
       const itemsNum = this.$slots.default.filter(({
         componentOptions
-      }) => componentOptions && componentOptions.tag === 'coerousel-item').length;
+      }) => componentOptions && componentOptions.tag === 'coerousel-item').length + 1;
       return -(this.itemSize * itemsNum) + (100 + this.itemSize);
     },
 
