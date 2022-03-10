@@ -102,7 +102,8 @@ export default {
     },
 
     endPosition () {
-      const itemsNum = this.$slots.default.filter(({ tag }) => tag === 'vue-component-2-Item').length
+      const itemsNum = this.$slots.default
+        .filter(({ componentOptions }) => componentOptions && componentOptions.tag === 'coerousel-item').length
 
       return -(this.itemSize * itemsNum) + (100 + this.itemSize)
     },
