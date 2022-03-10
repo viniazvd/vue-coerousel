@@ -1,33 +1,30 @@
 <template>
-  <div id="app">
-    <carousel :per-page="2" :is-loopable="false">
-      <div class="controller" slot="previous">
-        <span>X</span>
+  <div id="app" class="s-carousel-example">
+    <s-carousel
+      controllers
+      :items="items"
+      :per-page="2"
+      :is-loopable="false"
+      :breakpoints="breakpoints"
+    >
+      <div slot-scope="{ item }" class="ball" :style="{ backgroundColor: item.color }">
+        <!-- {{ item }} -->
       </div>
-
-      <carousel-item v-for="(option, index) in options" :key="index">
-        <div class="ball" :style="{ backgroundColor: option.color }" />
-      </carousel-item>
-
-      <div class="controller" slot="next">
-        <span>X</span>
-      </div>
-    </carousel>
+    </s-carousel>
   </div>
 </template>
 
 <script>
-import Carousel from '../src/components/Carousel.vue'
-import CarouselItem from '../src/components/CarouselItem.vue'
+import SCarousel from './Carousel.vue'
 
 export default {
-  name: 'app',
+  name: 'SCarouselExample',
 
-  components: { Carousel, CarouselItem },
+  components: { SCarousel },
 
   data () {
     return {
-      options: [
+      items: [
         { color: 'blue' },
         { color: 'yellow' },
         { color: 'red' },
@@ -55,20 +52,24 @@ export default {
 </script>
 
 <style lang="scss">
-// #app {
-//   max-width: 900px;
-//   margin: 0 auto;
-// }
-
-.ball {
-  width: 300px;
-  height: 300px;
-  margin: 0 auto;
-  border-radius: 50%;
-}
-
-.controller2 {
-  display: flex;
-  align-items: center;
+.s-carousel-example {
+  & > .s-carousel {
+    width: 90%;
+    margin-left: 40px;
+    & > .wrapper {
+      & > .inner {
+        // -webkit-transition: all .4s cubic-bezier(0.47, 0, 0.745, 0.715);
+        // transition:         all .4s cubic-bezier(0.47, 0, 0.745, 0.715);
+        & > .carousel-item {
+          & > .ball {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            border-radius: 50%;
+          }
+        }
+      }
+    }
+  }
 }
 </style>

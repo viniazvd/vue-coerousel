@@ -75,7 +75,9 @@ export default {
     const define = (name, get) => Object.defineProperty(options, name, { get, enumerable: true })
 
     define('data', () => this)
-    define('items', () => this.$slots.default.filter(({ tag }) => tag === 'vue-component-2-Item').length)
+    define('items', () => this.$slots.default
+      .filter(({ componentOptions }) => componentOptions && componentOptions.tag === 'coerousel-item').length
+    )
 
     return options
   },
