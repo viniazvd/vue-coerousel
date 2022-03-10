@@ -103,7 +103,7 @@ export default {
 
     endPosition () {
       const itemsNum = this.$slots.default
-        .filter(({ componentOptions }) => componentOptions && componentOptions.tag === 'coerousel-item').length
+        .filter(({ componentOptions }) => componentOptions && componentOptions.tag === 'coerousel-item').length + 1
 
       return -(this.itemSize * itemsNum) + (100 + this.itemSize)
     },
