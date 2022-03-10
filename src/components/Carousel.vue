@@ -74,8 +74,8 @@ export default {
 
     const define = (name, get) => Object.defineProperty(options, name, { get, enumerable: true })
 
-    define('items', () => this.$slots.default.length)
     define('data', () => this)
+    define('items', () => this.$slots.default.filter(({ tag }) => tag === 'vue-component-2-Item').length)
 
     return options
   },
@@ -100,7 +100,7 @@ export default {
     },
 
     endPosition () {
-      const itemsNum = this.$slots.default.length
+      const itemsNum = this.$slots.default.filter(({ tag }) => tag === 'vue-component-2-Item').length
 
       return -(this.itemSize * itemsNum) + (100 + this.itemSize)
     },
