@@ -64,8 +64,5 @@ export default {
   & > .next {
     right: -60px;
   }
-
-
-  & > .wrapper { background: transparent; }
 }
 </style>
