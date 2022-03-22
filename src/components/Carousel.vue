@@ -1,7 +1,7 @@
 <script>
 
 // <template>
-//   <div class="vue-coerousel">
+//   <div class="vue-coerousel-component">
 //     position: {{ position }}
 
 //     <div class="wrapper">
@@ -132,7 +132,7 @@ export default {
     },
 
     classes () {
-      return ['vue-coerousel',
+      return ['vue-coerousel-component',
         {
           '--is-first-page': this.currentPage === 1,
           '--is-last-page': this.currentPage === this.internalPerPage
@@ -287,7 +287,7 @@ export default {
 </script>
 
 <style lang="scss">
-.vue-coerousel {
+.vue-coerousel-component {
   position: relative;
 
   & > .controller {
