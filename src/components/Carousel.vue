@@ -61,6 +61,7 @@ export default {
       initPosition: 0,
       position: 0,
       currentWidth: 0,
+      isDragging: false,
       // velocity: 0,
       // inertia: false,
       // startTime: 0,
@@ -134,6 +135,7 @@ export default {
     classes () {
       return ['vue-coerousel-component',
         {
+          // '--is-dragging': this.isDragging,
           '--is-first-page': this.currentPage === 1,
           '--is-last-page': this.currentPage === this.internalPerPage
         }
@@ -141,7 +143,10 @@ export default {
     },
 
     style () {
-      return { transform: `translateX(${this.position}%)` }
+      return {
+        transform: `translateX(${this.position}%)`,
+        cursor: this.isDragging ? 'pointer' : 'initial'
+      }
     }
   },
 
@@ -212,6 +217,7 @@ export default {
     },
 
     mousemove (e) {
+      this.isDragging = true
       const x = this.getX(e)
 
       const slipped = ~~((x / this.containerWidth) - this.initPosition)
@@ -224,6 +230,7 @@ export default {
 
     mousedown (e) {
       if (!this.isDraggable) return false
+      this.isDragging = true
 
       const x = this.getX(e)
 
@@ -239,6 +246,7 @@ export default {
     mouseup (e) {
       if (!this.isDraggable) return false
       if (this.centerAfterDragging) this.fixPosition()
+      this.isDragging = false
 
       // this.endTime = new Date().getTime() // e.timeStamp
 
@@ -289,6 +297,8 @@ export default {
 <style lang="scss">
 .vue-coerousel-component {
   position: relative;
+
+  &.--is-dragging { cursor: pointer; }
 
   & > .controller {
     z-index: 1;
