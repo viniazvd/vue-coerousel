@@ -276,7 +276,11 @@ export default {
     const pagination = this.pagination && h(Pagination)
 
     return h('div',
-      { class: this.carouselClasses },
+      {
+        attrs: {
+          class: this.carouselClasses
+        }
+      },
       [
         // [ h('span', `position: ${this.position}`) ],
         this.controllers ? previous : false,
