@@ -143,7 +143,7 @@ export default {
       return ['vue-coerousel',
         {
           '--is-first-page': this.currentPage === 1,
-          '--is-last-page': this.currentPage === this.internalPerPage
+          '--is-last-page': this.currentPage === this.totalPages
         }
       ]
     },
