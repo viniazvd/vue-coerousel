@@ -314,8 +314,6 @@ export default {
 
   & > .wrapper {
     overflow: hidden;
-    // max-height: 300px;
-    // background-color: gray;
 
     & > .inner {
       display: flex;
