@@ -7,6 +7,6 @@ module.exports = {
   input: 'src/index.js',
   format: [ 'es', 'cjs', 'umd' ],
   plugins: [
-    Vue()
+    Vue({ css: false, style: { trim: false }})
   ]
 }
