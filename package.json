@@ -1,6 +1,6 @@
 {
   "name": "vue-coerousel",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "cdn": "dist/vue-coerousel.js",
   "main": "dist/vue-coerousel.cjs.js",
   "unpkg": "dist/vue-coerousel.js",
