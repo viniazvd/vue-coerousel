@@ -830,7 +830,7 @@ __webpack_require__.r(__webpack_exports__);
       return ~~(this.$refs['inner'].clientWidth / 100);
     },
 
-    classes() {
+    carouselClasses() {
       return ['vue-coerousel', {
         '--is-first-page': this.currentPage === 1,
         '--is-last-page': this.currentPage === this.internalPerPage
@@ -962,7 +962,7 @@ __webpack_require__.r(__webpack_exports__);
     }, [inner]);
     const pagination = this.pagination && h(_Pagination_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
     return h('div', {
-      class: this.classes
+      class: this.carouselClasses
     }, [// [ h('span', `position: ${this.position}`) ],
     this.controllers ? previous : false, wrapper, this.controllers ? next : false, pagination]);
   },
