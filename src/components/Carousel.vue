@@ -132,7 +132,7 @@ export default {
       return ~~(this.$refs['inner'].clientWidth / 100)
     },
 
-    classes () {
+    carouselClasses () {
       return ['vue-coerousel',
         {
           '--is-first-page': this.currentPage === 1,
@@ -276,7 +276,7 @@ export default {
     const pagination = this.pagination && h(Pagination)
 
     return h('div',
-      { class: this.classes },
+      { class: this.carouselClasses },
       [
         // [ h('span', `position: ${this.position}`) ],
         this.controllers ? previous : false,
