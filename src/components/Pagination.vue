@@ -16,11 +16,9 @@ export default {
 
   inject: ['items', 'data'],
 
-  computed: {
-    totalPages () {
-      return Math.ceil(this.items / this.data.internalPerPage)
-    },
+  props: { totalPages: Number },
 
+  computed: {
     containerWidth () {
       const pagination = this.totalPages - 1
 

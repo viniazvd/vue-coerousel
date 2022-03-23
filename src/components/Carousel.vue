@@ -76,9 +76,7 @@ export default {
     const define = (name, get) => Object.defineProperty(options, name, { get, enumerable: true })
 
     define('data', () => this)
-    define('items', () => this.$slots.default
-      .filter(({ componentOptions }) => componentOptions && componentOptions.tag === 'coerousel-item').length
-    )
+    define('items', () => this.itemQtd)
 
     return options
   },
@@ -100,6 +98,15 @@ export default {
   computed: {
     itemSize () {
       return 100 / this.internalPerPage
+    },
+
+    itemQtd () {
+      return this.$slots.default
+        .filter(({ componentOptions }) => componentOptions && componentOptions.tag === 'coerousel-item').length
+    },
+
+    totalPages () {
+      return Math.round(this.itemQtd / this.internalPerPage) || 0
     },
 
     endPosition () {
@@ -273,7 +280,9 @@ export default {
 
     const wrapper = h('div', { staticClass: 'wrapper', ref: 'wrapper' }, [ inner ])
 
-    const pagination = this.pagination && h(Pagination)
+    const pagination = this.pagination && h(Pagination, {
+      props: { totalPages: this.totalPages }
+    })
 
     return h('div',
       { class: this.carouselClasses },
