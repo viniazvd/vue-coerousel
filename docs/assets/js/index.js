@@ -431,7 +431,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".vue-coerousel {\n  position: relative;\n}\n.vue-coerousel > .controller {\n    z-index: 1;\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    border: 1px solid black;\n    position: absolute;\n    top: 50%;\n    transform: translateY(-50%);\n}\n.vue-coerousel > .previous {\n    left: 10px;\n}\n.vue-coerousel > .next {\n    right: 10px;\n}\n.vue-coerousel > .wrapper {\n    overflow: hidden;\n}\n.vue-coerousel > .wrapper > .inner {\n      display: flex;\n      transition: transform .3s;\n}\n", "", {"version":3,"sources":["/home/viniazvd/vue-coerousel/src/components/Carousel.vue"],"names":[],"mappings":"AAwSA;EACE,mBAAkB;CA2BnB;AA5BD;IAII,WAAU;IACV,YAAW;IACX,aAAY;IACZ,mBAAkB;IAClB,wBAAuB;IAEvB,mBAAkB;IAClB,SAAQ;IACR,4BAA2B;CAC5B;AAbH;IAekB,WAAU;CAAI;AAfhC;IAgBc,YAAW;CAAI;AAhB7B;IAmBI,iBAAgB;CAQjB;AA3BH;MAsBM,cAAa;MACb,0BAAyB;CAG1B","file":"Carousel.vue?vue&type=style&index=0&lang=scss&","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.vue-coerousel {\n  position: relative;\n\n  & > .controller {\n    z-index: 1;\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    border: 1px solid black;\n\n    position: absolute;\n    top: 50%;\n    transform: translateY(-50%);\n  }\n\n  & > .previous { left: 10px; }\n  & > .next { right: 10px; }\n\n  & > .wrapper {\n    overflow: hidden;\n\n    & > .inner {\n      display: flex;\n      transition: transform .3s;\n      // -webkit-transition: all 600ms cubic-bezier(0.47, 0, 0.745, 0.715);\n      // transition:         all 600ms cubic-bezier(0.47, 0, 0.745, 0.715);\n    }\n  }\n}\n"],"sourceRoot":""}]);
+exports.push([module.i, ".vue-coerousel {\n  position: relative;\n}\n.vue-coerousel > .controller {\n    z-index: 1;\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    border: 1px solid black;\n    position: absolute;\n    top: 50%;\n    transform: translateY(-50%);\n}\n.vue-coerousel > .previous {\n    left: 10px;\n}\n.vue-coerousel > .next {\n    right: 10px;\n}\n.vue-coerousel > .wrapper {\n    overflow: hidden;\n}\n.vue-coerousel > .wrapper > .inner {\n      display: flex;\n      transition: transform .3s;\n}\n", "", {"version":3,"sources":["/home/viniazvd/vue-coerousel/src/components/Carousel.vue"],"names":[],"mappings":"AAiTA;EACE,mBAAkB;CA2BnB;AA5BD;IAII,WAAU;IACV,YAAW;IACX,aAAY;IACZ,mBAAkB;IAClB,wBAAuB;IAEvB,mBAAkB;IAClB,SAAQ;IACR,4BAA2B;CAC5B;AAbH;IAekB,WAAU;CAAI;AAfhC;IAgBc,YAAW;CAAI;AAhB7B;IAmBI,iBAAgB;CAQjB;AA3BH;MAsBM,cAAa;MACb,0BAAyB;CAG1B","file":"Carousel.vue?vue&type=style&index=0&lang=scss&","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.vue-coerousel {\n  position: relative;\n\n  & > .controller {\n    z-index: 1;\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    border: 1px solid black;\n\n    position: absolute;\n    top: 50%;\n    transform: translateY(-50%);\n  }\n\n  & > .previous { left: 10px; }\n  & > .next { right: 10px; }\n\n  & > .wrapper {\n    overflow: hidden;\n\n    & > .inner {\n      display: flex;\n      transition: transform .3s;\n      // -webkit-transition: all 600ms cubic-bezier(0.47, 0, 0.745, 0.715);\n      // transition:         all 600ms cubic-bezier(0.47, 0, 0.745, 0.715);\n    }\n  }\n}\n"],"sourceRoot":""}]);
 
 // exports
 
@@ -469,7 +469,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".pagination {\n  display: flex;\n  margin: 0 auto;\n  padding-top: 10px;\n  width: var(--width);\n  justify-content: space-between;\n}\n.pagination > .option {\n    position: relative;\n    width: 10px;\n    height: 10px;\n    opacity: 0.3;\n    outline: none;\n    border-radius: 5px;\n    background-color: #121E48;\n    transition: width .3s linear;\n}\n.pagination > .-active {\n    opacity: 1;\n    width: 35px;\n    background: linear-gradient(135deg, #BC4CF7 0%, #7873EE 100%);\n}\n", "", {"version":3,"sources":["/home/viniazvd/vue-coerousel/src/components/Pagination.vue"],"names":[],"mappings":"AAgEA;EACE,cAAa;EACb,eAAc;EACd,kBAAiB;EACjB,oBAAmB;EACnB,+BAA8B;CAkB/B;AAvBD;IAQI,mBAAkB;IAClB,YAAW;IACX,aAAY;IACZ,aAAY;IACZ,cAAa;IACb,mBAAkB;IAClB,0BAAyB;IACzB,6BAA4B;CAC7B;AAhBH;IAmBI,WAAU;IACV,YAAW;IACX,8DAA6D;CAC9D","file":"Pagination.vue?vue&type=style&index=0&lang=scss&","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.pagination {\n  display: flex;\n  margin: 0 auto;\n  padding-top: 10px;\n  width: var(--width);\n  justify-content: space-between;\n\n  & > .option {\n    position: relative;\n    width: 10px;\n    height: 10px;\n    opacity: 0.3;\n    outline: none;\n    border-radius: 5px;\n    background-color: #121E48;\n    transition: width .3s linear;\n  }\n\n  & > .-active {\n    opacity: 1;\n    width: 35px;\n    background: linear-gradient(135deg, #BC4CF7 0%, #7873EE 100%);\n  }\n}\n"],"sourceRoot":""}]);
+exports.push([module.i, ".pagination {\n  display: flex;\n  margin: 0 auto;\n  padding-top: 10px;\n  width: var(--width);\n  justify-content: space-between;\n}\n.pagination > .option {\n    position: relative;\n    width: 10px;\n    height: 10px;\n    opacity: 0.3;\n    outline: none;\n    border-radius: 5px;\n    background-color: #121E48;\n    transition: width .3s linear;\n}\n.pagination > .-active {\n    opacity: 1;\n    width: 35px;\n    background: linear-gradient(135deg, #BC4CF7 0%, #7873EE 100%);\n}\n", "", {"version":3,"sources":["/home/viniazvd/vue-coerousel/src/components/Pagination.vue"],"names":[],"mappings":"AA8DA;EACE,cAAa;EACb,eAAc;EACd,kBAAiB;EACjB,oBAAmB;EACnB,+BAA8B;CAkB/B;AAvBD;IAQI,mBAAkB;IAClB,YAAW;IACX,aAAY;IACZ,aAAY;IACZ,cAAa;IACb,mBAAkB;IAClB,0BAAyB;IACzB,6BAA4B;CAC7B;AAhBH;IAmBI,WAAU;IACV,YAAW;IACX,8DAA6D;CAC9D","file":"Pagination.vue?vue&type=style&index=0&lang=scss&","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.pagination {\n  display: flex;\n  margin: 0 auto;\n  padding-top: 10px;\n  width: var(--width);\n  justify-content: space-between;\n\n  & > .option {\n    position: relative;\n    width: 10px;\n    height: 10px;\n    opacity: 0.3;\n    outline: none;\n    border-radius: 5px;\n    background-color: #121E48;\n    transition: width .3s linear;\n  }\n\n  & > .-active {\n    opacity: 1;\n    width: 35px;\n    background: linear-gradient(135deg, #BC4CF7 0%, #7873EE 100%);\n  }\n}\n"],"sourceRoot":""}]);
 
 // exports
 
@@ -777,9 +777,7 @@ __webpack_require__.r(__webpack_exports__);
     });
 
     define('data', () => this);
-    define('items', () => this.$slots.default.filter(({
-      componentOptions
-    }) => componentOptions && componentOptions.tag === 'coerousel-item').length);
+    define('items', () => this.itemQtd);
     return options;
   },
 
@@ -801,6 +799,16 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     itemSize() {
       return 100 / this.internalPerPage;
+    },
+
+    itemQtd() {
+      return this.$slots.default.filter(({
+        componentOptions
+      }) => componentOptions && componentOptions.tag === 'coerousel-item').length;
+    },
+
+    totalPages() {
+      return Math.round(this.itemQtd / this.internalPerPage) || 0;
     },
 
     endPosition() {
@@ -960,7 +968,11 @@ __webpack_require__.r(__webpack_exports__);
       staticClass: 'wrapper',
       ref: 'wrapper'
     }, [inner]);
-    const pagination = this.pagination && h(_Pagination_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
+    const pagination = this.pagination && h(_Pagination_vue__WEBPACK_IMPORTED_MODULE_0__["default"], {
+      props: {
+        totalPages: this.totalPages
+      }
+    });
     return h('div', {
       class: this.carouselClasses
     }, [// [ h('span', `position: ${this.position}`) ],
@@ -1038,11 +1050,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Pagination',
   inject: ['items', 'data'],
+  props: {
+    totalPages: Number
+  },
   computed: {
-    totalPages() {
-      return Math.ceil(this.items / this.data.internalPerPage);
-    },
-
     containerWidth() {
       const pagination = this.totalPages - 1;
       return {
