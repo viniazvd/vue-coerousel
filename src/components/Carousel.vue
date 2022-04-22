@@ -144,6 +144,7 @@ export default {
 
       return ['vue-coerousel',
         {
+          '--has-controllers': this.controllers,
           '--is-first-page': this.itemQtd > 1 && isFirstPage,
           '--is-last-page': !isFirstPage && this.currentPage === this.totalPages
         }
