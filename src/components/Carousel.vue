@@ -140,10 +140,12 @@ export default {
     },
 
     carouselClasses () {
+      const isFirstPage = this.currentPage === 1
+
       return ['vue-coerousel',
         {
-          '--is-first-page': this.currentPage === 1,
-          '--is-last-page': this.currentPage === this.totalPages
+          '--is-first-page': this.itemQtd > 1 && isFirstPage,
+          '--is-last-page': !isFirstPage && this.currentPage === this.totalPages
         }
       ]
     },
