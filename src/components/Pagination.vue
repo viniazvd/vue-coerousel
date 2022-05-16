@@ -30,16 +30,16 @@ export default {
     setClasses (page) {
       return [
         'option', {
-          '-active': Math.round(this.data.position / -100) === (page - 1)
+          '-active': Math.ceil(this.data.position / -100) === (page - 1)
         }
       ]
     },
 
     goToPage (page) {
-      const remainder = this.items % this.data.internalPerPage
-      const diff = (this.totalPages === page && remainder && (this.data.internalPerPage - remainder) * this.data.itemSize) || 0
+      if (page === 1) return this.data.position = 0
+      if (this.data.totalPages === page) return this.data.position = this.data.endPosition
 
-      this.data.position = -(((page - 1) * 100) - diff)
+      this.data.position = -(page - 1) * 100
     }
   },
 

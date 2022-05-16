@@ -106,7 +106,7 @@ export default {
     },
 
     totalPages () {
-      return Math.round(this.itemQtd / this.internalPerPage) || 0
+      return Math.ceil(this.itemQtd / this.internalPerPage) || 0
     },
 
     endPosition () {
@@ -140,13 +140,13 @@ export default {
     },
 
     carouselClasses () {
-      const isFirstPage = this.currentPage === 1
+      const showController = this.itemQtd > this.internalPerPage
 
       return ['vue-coerousel',
         {
           '--has-controllers': this.controllers,
-          '--is-first-page': this.itemQtd > 1 && isFirstPage,
-          '--is-last-page': !isFirstPage && this.currentPage === this.totalPages
+          '--has-previous': showController && this.position < 0,
+          '--has-next': showController && this.position > this.endPosition
         }
       ]
     },
@@ -319,10 +319,10 @@ export default {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-  }
 
-  & > .previous { left: 10px; }
-  & > .next { right: 10px; }
+    &.next { display: none; }
+    &.previous { display: none; }
+  }
 
   & > .wrapper {
     overflow: hidden;
@@ -334,5 +334,13 @@ export default {
       // transition:         all 600ms cubic-bezier(0.47, 0, 0.745, 0.715);
     }
   }
+
+  &.--has-controllers {
+    & > .next { right: -60px; }
+    & > .previous { left: -60px; }
+  }
+
+  &.--has-next > .next { display: block; }
+  &.--has-previous > .previous { display: block; }
 }
 </style>
