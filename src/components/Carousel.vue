@@ -336,8 +336,8 @@ export default {
   }
 
   &.--has-controllers {
-    & > .next { right: -60px; }
-    & > .previous { left: -60px; }
+    & > .next { right: -10px; }
+    & > .previous { left: -10px; }
   }
 
   &.--has-next > .next { display: block; }
