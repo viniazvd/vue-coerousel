@@ -41,6 +41,7 @@ export default {
       default: true
     },
     isLoopable: Boolean,
+    hasShadow: Boolean,
     loopDelay: {
       type: [String, Number],
       default: 1000
@@ -66,7 +67,9 @@ export default {
       // inertia: false,
       // startTime: 0,
       // endTime: 0,
-      events: {}
+      events: {},
+      leftShadow: false,
+      rightShadow: false
     }
   },
 
@@ -79,6 +82,13 @@ export default {
     define('items', () => this.itemQtd)
 
     return options
+  },
+
+  watch: {
+    position: {
+      immediate: true,
+      handler: 'setShadows'
+    }
   },
 
   mounted () {
@@ -145,6 +155,8 @@ export default {
       return ['vue-coerousel',
         {
           '--has-controllers': this.controllers,
+          '--is-left-shadow': this.hasShadow && this.leftShadow,
+          '--is-right-shadow': this.hasShadow && this.rightShadow,
           '--has-previous': showController && this.position < 0,
           '--has-next': showController && this.position > this.endPosition
         }
@@ -160,6 +172,11 @@ export default {
   },
 
   methods: {
+    setShadows (position) {
+      this.leftShadow = this.hasShadow && position !== 0
+      this.rightShadow = this.hasShadow && position !== this.endPosition
+    },
+
     fixPosition () {
       const position = this.position / this.itemSize
 
@@ -306,8 +323,40 @@ export default {
 </script>
 
 <style lang="scss">
+$shadow-color1: rgba(243, 244, 246, 0);
+$shadow-color2: #F3F4F6;
+
+%shadow {
+  opacity: 0;
+  content: "";
+  z-index: 10;
+  position: absolute;
+  pointer-events: none;
+  transition: opacity .5s ease-in-out;
+}
+
 .vue-coerousel {
   position: relative;
+
+  &.--is-left-shadow > .wrapper {
+    &::before {
+      opacity: 1;
+      width: 30px;
+      height: 100%;
+      background: linear-gradient(to left, $shadow-color1 0%, $shadow-color2 70%);
+    }
+  }
+
+  &.--is-right-shadow > .wrapper {
+    &::after {
+      opacity: 1;
+      top: 0;
+      right: 0;
+      width: 30px;
+      height: 100%;
+      background: linear-gradient(to right, $shadow-color1 0%, $shadow-color2 70%);
+    }
+  }
 
   & > .controller {
     z-index: 1;
@@ -326,6 +375,10 @@ export default {
 
   & > .wrapper {
     overflow: hidden;
+    position: relative;
+
+    &::after { transform: scaleY(-1); }
+    &::before, &::after { @extend %shadow; }
 
     & > .inner {
       display: flex;
@@ -336,8 +389,8 @@ export default {
   }
 
   &.--has-controllers {
-    & > .next { right: -10px; }
-    & > .previous { left: -10px; }
+    & > .next { right: -60px; }
+    & > .previous { left: -60px; }
   }
 
   &.--has-next > .next { display: block; }
