@@ -9,9 +9,9 @@
   "umd:main": "dist/vue-coerousel.js",
   "scripts": {
     "test": "yarn build && NODE_ENV=test jest",
-    "dev": "yarn build && poi --serve examples/main.js",
+    "dev": "vite",
     "build": "bili",
-    "postbuild": "poi"
+    "doc": "vite build"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
@@ -25,7 +25,10 @@
     "node-sass": "4.14.1",
     "poi": "^12.1.6",
     "rollup-plugin-vue": "^4.3.2",
+    "sass": "^1.36.0",
     "sass-loader": "^7.1.0",
+    "vite": "^3.0.8",
+    "vite-plugin-vue2": "^2.0.2",
     "vue": "^2.5.21",
     "vue-jest": "^3.0.2",
     "vue-template-compiler": "^2.5.21"
@@ -43,5 +46,6 @@
     "moduleNameMapper": {
       "^@/(.*)$": "<rootDir>/src/$1"
     }
-  }
+  },
+  "dependencies": {}
 }

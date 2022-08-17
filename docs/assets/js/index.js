@@ -393,7 +393,7 @@ exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/li
 
 
 // module
-exports.push([module.i, ".s-carousel-example > .s-carousel {\n  width: 90%;\n  margin-left: 40px;\n}\n.s-carousel-example > .s-carousel > .wrapper > .inner > .carousel-item > .ball {\n    width: 200px;\n    height: 200px;\n    margin: 0 auto;\n    border-radius: 50%;\n}\n", "", {"version":3,"sources":["/home/viniazvd/vue-coerousel/examples/App.vue"],"names":[],"mappings":"AAsDA;EAEI,WAAU;EACV,kBAAiB;CAelB;AAlBH;IAUY,aAAY;IACZ,cAAa;IACb,eAAc;IACd,mBAAkB;CACnB","file":"App.vue?vue&type=style&index=0&lang=scss&","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.s-carousel-example {\n  & > .s-carousel {\n    width: 90%;\n    margin-left: 40px;\n    & > .wrapper {\n      & > .inner {\n        // -webkit-transition: all .4s cubic-bezier(0.47, 0, 0.745, 0.715);\n        // transition:         all .4s cubic-bezier(0.47, 0, 0.745, 0.715);\n        & > .carousel-item {\n          & > .ball {\n            width: 200px;\n            height: 200px;\n            margin: 0 auto;\n            border-radius: 50%;\n          }\n        }\n      }\n    }\n  }\n}\n"],"sourceRoot":""}]);
+exports.push([module.i, ".s-carousel-example > .s-carousel {\n  width: 90%;\n  margin-left: 40px;\n}\n.s-carousel-example > .s-carousel > .wrapper > .inner > .carousel-item > .ball {\n    width: 200px;\n    height: 200px;\n    margin: 0 auto;\n    border-radius: 50%;\n}\n", "", {"version":3,"sources":["/home/viniazvd/libs/vue-coerousel/examples/App.vue"],"names":[],"mappings":"AAsDA;EAEI,WAAU;EACV,kBAAiB;CAelB;AAlBH;IAUY,aAAY;IACZ,cAAa;IACb,eAAc;IACd,mBAAkB;CACnB","file":"App.vue?vue&type=style&index=0&lang=scss&","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.s-carousel-example {\n  & > .s-carousel {\n    width: 90%;\n    margin-left: 40px;\n    & > .wrapper {\n      & > .inner {\n        // -webkit-transition: all .4s cubic-bezier(0.47, 0, 0.745, 0.715);\n        // transition:         all .4s cubic-bezier(0.47, 0, 0.745, 0.715);\n        & > .carousel-item {\n          & > .ball {\n            width: 200px;\n            height: 200px;\n            margin: 0 auto;\n            border-radius: 50%;\n          }\n        }\n      }\n    }\n  }\n}\n"],"sourceRoot":""}]);
 
 // exports
 
@@ -412,7 +412,7 @@ exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/li
 
 
 // module
-exports.push([module.i, ".s-carousel > .controller {\n  cursor: pointer;\n  background: #FFFFFF;\n}\n.s-carousel > .controller > .previous {\n    position: absolute;\n    top: 49%;\n    left: 13px;\n    transform: translateY(-50%);\n    font-size: 20px !important;\n}\n.s-carousel > .controller > .next {\n    position: absolute;\n    top: 49%;\n    right: 13px;\n    transform: translateY(-50%);\n    font-size: 20px !important;\n}\n.s-carousel > .previous {\n  left: -60px;\n}\n.s-carousel > .next {\n  right: -60px;\n}\n", "", {"version":3,"sources":["/home/viniazvd/vue-coerousel/examples/Carousel.vue"],"names":[],"mappings":"AAsCA;EAEI,gBAAe;EACf,oBAAmB;CAiBpB;AApBH;IAMM,mBAAkB;IAClB,SAAQ;IACR,WAAU;IACV,4BAA2B;IAC3B,2BAA0B;CAC3B;AAXL;IAcM,mBAAkB;IAClB,SAAQ;IACR,YAAW;IACX,4BAA2B;IAC3B,2BAA0B;CAC3B;AAnBL;EAuBI,YAAW;CACZ;AAxBH;EA0BI,aAAY;CACb","file":"Carousel.vue?vue&type=style&index=0&lang=scss&","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.s-carousel {\n  & > .controller {\n    cursor: pointer;\n    background: #FFFFFF;\n\n    & > .previous {\n      position: absolute;\n      top: 49%;\n      left: 13px;\n      transform: translateY(-50%);\n      font-size: 20px !important;\n    }\n\n    & > .next {\n      position: absolute;\n      top: 49%;\n      right: 13px;\n      transform: translateY(-50%);\n      font-size: 20px !important;\n    }\n  }\n\n  & > .previous {\n    left: -60px;\n  }\n  & > .next {\n    right: -60px;\n  }\n}\n"],"sourceRoot":""}]);
+exports.push([module.i, ".s-carousel > .controller {\n  cursor: pointer;\n  background: #FFFFFF;\n}\n.s-carousel > .controller > .previous {\n    position: absolute;\n    top: 49%;\n    left: 13px;\n    transform: translateY(-50%);\n    font-size: 20px !important;\n}\n.s-carousel > .controller > .next {\n    position: absolute;\n    top: 49%;\n    right: 13px;\n    transform: translateY(-50%);\n    font-size: 20px !important;\n}\n.s-carousel > .previous {\n  left: -60px;\n}\n.s-carousel > .next {\n  right: -60px;\n}\n", "", {"version":3,"sources":["/home/viniazvd/libs/vue-coerousel/examples/Carousel.vue"],"names":[],"mappings":"AAsCA;EAEI,gBAAe;EACf,oBAAmB;CAiBpB;AApBH;IAMM,mBAAkB;IAClB,SAAQ;IACR,WAAU;IACV,4BAA2B;IAC3B,2BAA0B;CAC3B;AAXL;IAcM,mBAAkB;IAClB,SAAQ;IACR,YAAW;IACX,4BAA2B;IAC3B,2BAA0B;CAC3B;AAnBL;EAuBI,YAAW;CACZ;AAxBH;EA0BI,aAAY;CACb","file":"Carousel.vue?vue&type=style&index=0&lang=scss&","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.s-carousel {\n  & > .controller {\n    cursor: pointer;\n    background: #FFFFFF;\n\n    & > .previous {\n      position: absolute;\n      top: 49%;\n      left: 13px;\n      transform: translateY(-50%);\n      font-size: 20px !important;\n    }\n\n    & > .next {\n      position: absolute;\n      top: 49%;\n      right: 13px;\n      transform: translateY(-50%);\n      font-size: 20px !important;\n    }\n  }\n\n  & > .previous {\n    left: -60px;\n  }\n  & > .next {\n    right: -60px;\n  }\n}\n"],"sourceRoot":""}]);
 
 // exports
 
@@ -431,7 +431,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".vue-coerousel {\n  position: relative;\n}\n.vue-coerousel > .controller {\n    z-index: 1;\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    border: 1px solid black;\n    position: absolute;\n    top: 50%;\n    transform: translateY(-50%);\n}\n.vue-coerousel > .controller.next {\n      display: none;\n}\n.vue-coerousel > .controller.previous {\n      display: none;\n}\n.vue-coerousel > .wrapper {\n    overflow: hidden;\n}\n.vue-coerousel > .wrapper > .inner {\n      display: flex;\n      transition: transform .3s;\n}\n.vue-coerousel.\\--has-controllers > .next {\n    right: -10px;\n}\n.vue-coerousel.\\--has-controllers > .previous {\n    left: -10px;\n}\n.vue-coerousel.\\--has-next > .next {\n    display: block;\n}\n.vue-coerousel.\\--has-previous > .previous {\n    display: block;\n}\n", "", {"version":3,"sources":["/home/viniazvd/vue-coerousel/src/components/Carousel.vue"],"names":[],"mappings":"AAoTA;EACE,mBAAkB;CAmCnB;AApCD;IAII,WAAU;IACV,YAAW;IACX,aAAY;IACZ,mBAAkB;IAClB,wBAAuB;IAEvB,mBAAkB;IAClB,SAAQ;IACR,4BAA2B;CAI5B;AAhBH;MAca,cAAa;CAAI;AAd9B;MAeiB,cAAa;CAAI;AAflC;IAmBI,iBAAgB;CAQjB;AA3BH;MAsBM,cAAa;MACb,0BAAyB;CAG1B;AA1BL;IA8BgB,aAAY;CAAI;AA9BhC;IA+BoB,YAAW;CAAI;AA/BnC;IAkCyB,eAAc;CAAI;AAlC3C;IAmCiC,eAAc;CAAI","file":"Carousel.vue?vue&type=style&index=0&lang=scss&","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.vue-coerousel {\n  position: relative;\n\n  & > .controller {\n    z-index: 1;\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    border: 1px solid black;\n\n    position: absolute;\n    top: 50%;\n    transform: translateY(-50%);\n\n    &.next { display: none; }\n    &.previous { display: none; }\n  }\n\n  & > .wrapper {\n    overflow: hidden;\n\n    & > .inner {\n      display: flex;\n      transition: transform .3s;\n      // -webkit-transition: all 600ms cubic-bezier(0.47, 0, 0.745, 0.715);\n      // transition:         all 600ms cubic-bezier(0.47, 0, 0.745, 0.715);\n    }\n  }\n\n  &.--has-controllers {\n    & > .next { right: -10px; }\n    & > .previous { left: -10px; }\n  }\n\n  &.--has-next > .next { display: block; }\n  &.--has-previous > .previous { display: block; }\n}\n"],"sourceRoot":""}]);
+exports.push([module.i, ".vue-coerousel {\n  position: relative;\n}\n.vue-coerousel > .controller {\n    z-index: 1;\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    border: 1px solid black;\n    position: absolute;\n    top: 50%;\n    transform: translateY(-50%);\n}\n.vue-coerousel > .controller.next {\n      display: none;\n}\n.vue-coerousel > .controller.previous {\n      display: none;\n}\n.vue-coerousel > .wrapper {\n    overflow: hidden;\n}\n.vue-coerousel > .wrapper > .inner {\n      display: flex;\n      transition: transform .3s;\n}\n.vue-coerousel.\\--has-controllers > .next {\n    right: -10px;\n}\n.vue-coerousel.\\--has-controllers > .previous {\n    left: -10px;\n}\n.vue-coerousel.\\--has-next > .next {\n    display: block;\n}\n.vue-coerousel.\\--has-previous > .previous {\n    display: block;\n}\n", "", {"version":3,"sources":["/home/viniazvd/libs/vue-coerousel/src/components/Carousel.vue"],"names":[],"mappings":"AAsTA;EACE,mBAAkB;CAmCnB;AApCD;IAII,WAAU;IACV,YAAW;IACX,aAAY;IACZ,mBAAkB;IAClB,wBAAuB;IAEvB,mBAAkB;IAClB,SAAQ;IACR,4BAA2B;CAI5B;AAhBH;MAca,cAAa;CAAI;AAd9B;MAeiB,cAAa;CAAI;AAflC;IAmBI,iBAAgB;CAQjB;AA3BH;MAsBM,cAAa;MACb,0BAAyB;CAG1B;AA1BL;IA8BgB,aAAY;CAAI;AA9BhC;IA+BoB,YAAW;CAAI;AA/BnC;IAkCyB,eAAc;CAAI;AAlC3C;IAmCiC,eAAc;CAAI","file":"Carousel.vue?vue&type=style&index=0&lang=scss&","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.vue-coerousel {\n  position: relative;\n\n  & > .controller {\n    z-index: 1;\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    border: 1px solid black;\n\n    position: absolute;\n    top: 50%;\n    transform: translateY(-50%);\n\n    &.next { display: none; }\n    &.previous { display: none; }\n  }\n\n  & > .wrapper {\n    overflow: hidden;\n\n    & > .inner {\n      display: flex;\n      transition: transform .3s;\n      // -webkit-transition: all 600ms cubic-bezier(0.47, 0, 0.745, 0.715);\n      // transition:         all 600ms cubic-bezier(0.47, 0, 0.745, 0.715);\n    }\n  }\n\n  &.--has-controllers {\n    & > .next { right: -10px; }\n    & > .previous { left: -10px; }\n  }\n\n  &.--has-next > .next { display: block; }\n  &.--has-previous > .previous { display: block; }\n}\n"],"sourceRoot":""}]);
 
 // exports
 
@@ -450,7 +450,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".carousel-item {\n  display: flex;\n  user-select: none;\n  outline: none;\n  overflow: hidden;\n}\n", "", {"version":3,"sources":["/home/viniazvd/vue-coerousel/src/components/CarouselItem.vue"],"names":[],"mappings":"AA8BA;EACE,cAAa;EACb,kBAAiB;EACjB,cAAa;EACb,iBAAgB;CACjB","file":"CarouselItem.vue?vue&type=style&index=0&lang=scss&","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.carousel-item {\n  display: flex;\n  user-select: none;\n  outline: none;\n  overflow: hidden;\n}\n"],"sourceRoot":""}]);
+exports.push([module.i, ".carousel-item {\n  display: flex;\n  user-select: none;\n  outline: none;\n  overflow: hidden;\n}\n", "", {"version":3,"sources":["/home/viniazvd/libs/vue-coerousel/src/components/CarouselItem.vue"],"names":[],"mappings":"AA8BA;EACE,cAAa;EACb,kBAAiB;EACjB,cAAa;EACb,iBAAgB;CACjB","file":"CarouselItem.vue?vue&type=style&index=0&lang=scss&","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.carousel-item {\n  display: flex;\n  user-select: none;\n  outline: none;\n  overflow: hidden;\n}\n"],"sourceRoot":""}]);
 
 // exports
 
@@ -469,7 +469,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".pagination {\n  display: flex;\n  margin: 0 auto;\n  padding-top: 10px;\n  width: var(--width);\n  justify-content: space-between;\n}\n.pagination > .option {\n    position: relative;\n    width: 10px;\n    height: 10px;\n    opacity: 0.3;\n    outline: none;\n    border-radius: 5px;\n    background-color: #121E48;\n    transition: width .3s linear;\n}\n.pagination > .-active {\n    opacity: 1;\n    width: 35px;\n    background: linear-gradient(135deg, #BC4CF7 0%, #7873EE 100%);\n}\n", "", {"version":3,"sources":["/home/viniazvd/vue-coerousel/src/components/Pagination.vue"],"names":[],"mappings":"AA8DA;EACE,cAAa;EACb,eAAc;EACd,kBAAiB;EACjB,oBAAmB;EACnB,+BAA8B;CAkB/B;AAvBD;IAQI,mBAAkB;IAClB,YAAW;IACX,aAAY;IACZ,aAAY;IACZ,cAAa;IACb,mBAAkB;IAClB,0BAAyB;IACzB,6BAA4B;CAC7B;AAhBH;IAmBI,WAAU;IACV,YAAW;IACX,8DAA6D;CAC9D","file":"Pagination.vue?vue&type=style&index=0&lang=scss&","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.pagination {\n  display: flex;\n  margin: 0 auto;\n  padding-top: 10px;\n  width: var(--width);\n  justify-content: space-between;\n\n  & > .option {\n    position: relative;\n    width: 10px;\n    height: 10px;\n    opacity: 0.3;\n    outline: none;\n    border-radius: 5px;\n    background-color: #121E48;\n    transition: width .3s linear;\n  }\n\n  & > .-active {\n    opacity: 1;\n    width: 35px;\n    background: linear-gradient(135deg, #BC4CF7 0%, #7873EE 100%);\n  }\n}\n"],"sourceRoot":""}]);
+exports.push([module.i, ".pagination {\n  display: flex;\n  margin: 0 auto;\n  padding-top: 10px;\n  width: var(--width);\n  justify-content: space-between;\n}\n.pagination > .option {\n    position: relative;\n    width: 10px;\n    height: 10px;\n    opacity: 0.3;\n    outline: none;\n    border-radius: 5px;\n    background-color: #121E48;\n    transition: width .3s linear;\n}\n.pagination > .-active {\n    opacity: 1;\n    width: 35px;\n    background: linear-gradient(135deg, #BC4CF7 0%, #7873EE 100%);\n}\n", "", {"version":3,"sources":["/home/viniazvd/libs/vue-coerousel/src/components/Pagination.vue"],"names":[],"mappings":"AA8DA;EACE,cAAa;EACb,eAAc;EACd,kBAAiB;EACjB,oBAAmB;EACnB,+BAA8B;CAkB/B;AAvBD;IAQI,mBAAkB;IAClB,YAAW;IACX,aAAY;IACZ,aAAY;IACZ,cAAa;IACb,mBAAkB;IAClB,0BAAyB;IACzB,6BAA4B;CAC7B;AAhBH;IAmBI,WAAU;IACV,YAAW;IACX,8DAA6D;CAC9D","file":"Pagination.vue?vue&type=style&index=0&lang=scss&","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.pagination {\n  display: flex;\n  margin: 0 auto;\n  padding-top: 10px;\n  width: var(--width);\n  justify-content: space-between;\n\n  & > .option {\n    position: relative;\n    width: 10px;\n    height: 10px;\n    opacity: 0.3;\n    outline: none;\n    border-radius: 5px;\n    background-color: #121E48;\n    transition: width .3s linear;\n  }\n\n  & > .-active {\n    opacity: 1;\n    width: 35px;\n    background: linear-gradient(135deg, #BC4CF7 0%, #7873EE 100%);\n  }\n}\n"],"sourceRoot":""}]);
 
 // exports
 
@@ -608,24 +608,6 @@ __webpack_require__.r(__webpack_exports__);
         color: 'black'
       }, {
         color: 'pink'
-      }, {
-        color: 'turquoise'
-      }, {
-        color: 'magenta'
-      }, {
-        color: 'white'
-      }, {
-        color: 'orange'
-      }, {
-        color: 'green'
-      }, {
-        color: 'purple'
-      }, {
-        color: 'cyan'
-      }, {
-        color: 'lime'
-      }, {
-        color: 'lightblue'
       }],
       breakpoints: {
         1024: {
@@ -702,7 +684,8 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Pagination_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Pagination.vue */ "./src/components/Pagination.vue");
-/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services */ "./src/services/index.js");
+!(function webpackMissingModule() { var e = new Error("Cannot find module 'vue-coe-shadowed'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services */ "./src/services/index.js");
 // <template>
 //   <div class="vue-coerousel">
 //     position: {{ position }}
@@ -716,10 +699,13 @@ __webpack_require__.r(__webpack_exports__);
 // </template>
 
 
+console.log(!(function webpackMissingModule() { var e = new Error("Cannot find module 'vue-coe-shadowed'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Carousel',
   components: {
-    Pagination: _Pagination_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+    Pagination: _Pagination_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    Shadowed: !(function webpackMissingModule() { var e = new Error("Cannot find module 'vue-coe-shadowed'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
   },
   props: {
     pagination: {
@@ -783,9 +769,9 @@ __webpack_require__.r(__webpack_exports__);
 
   mounted() {
     this.events = {
-      'start': Object(_services__WEBPACK_IMPORTED_MODULE_1__["isMobile"])() ? 'touchstart' : 'mousedown',
-      'move': Object(_services__WEBPACK_IMPORTED_MODULE_1__["isMobile"])() ? 'touchmove' : 'mousemove',
-      'end': Object(_services__WEBPACK_IMPORTED_MODULE_1__["isMobile"])() ? 'touchend' : 'mouseup'
+      'start': Object(_services__WEBPACK_IMPORTED_MODULE_2__["isMobile"])() ? 'touchstart' : 'mousedown',
+      'move': Object(_services__WEBPACK_IMPORTED_MODULE_2__["isMobile"])() ? 'touchmove' : 'mousemove',
+      'end': Object(_services__WEBPACK_IMPORTED_MODULE_2__["isMobile"])() ? 'touchend' : 'mouseup'
     };
     this.isLoopable && this.initLoop();
     this.hasBreakpoints && this.setCurrentWidth({
