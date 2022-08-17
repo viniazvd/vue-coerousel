@@ -57,12 +57,5 @@ export default {
       font-size: 20px !important;
     }
   }
-
-  & > .previous {
-    left: -60px;
-  }
-  & > .next {
-    right: -60px;
-  }
 }
 </style>

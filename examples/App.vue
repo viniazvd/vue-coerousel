@@ -2,6 +2,7 @@
   <div id="app" class="s-carousel-example">
     <s-carousel
       controllers
+      has-shadow
       :items="items"
       :per-page="2"
       :is-loopable="false"
@@ -30,15 +31,15 @@ export default {
         { color: 'red' },
         { color: 'black' },
         { color: 'pink' },
-        { color: 'turquoise' },
-        { color: 'magenta' },
-        { color: 'white' },
-        { color: 'orange' },
-        { color: 'green' },
-        { color: 'purple' },
-        { color: 'cyan' },
-        { color: 'lime' },
-        { color: 'lightblue' }
+        // { color: 'turquoise' },
+        // { color: 'magenta' },
+        // { color: 'white' },
+        // { color: 'orange' },
+        // { color: 'green' },
+        // { color: 'purple' },
+        // { color: 'cyan' },
+        // { color: 'lime' },
+        // { color: 'lightblue' }
       ],
       breakpoints: {
         1024: { perPage: 4 },
@@ -53,9 +54,12 @@ export default {
 
 <style lang="scss">
 .s-carousel-example {
+  padding: 100px;
+
   & > .s-carousel {
     width: 90%;
     margin-left: 40px;
+
     & > .wrapper {
       & > .inner {
         // -webkit-transition: all .4s cubic-bezier(0.47, 0, 0.745, 0.715);
